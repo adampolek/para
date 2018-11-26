@@ -1,4 +1,4 @@
-package sample;
+package sample.MenuFirst;
 
 public class Controller {
 }
