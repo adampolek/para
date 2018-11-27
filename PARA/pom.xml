@@ -11,6 +11,7 @@
     <modules>
         <module>PARA-core</module>
         <module>PARA-textmode</module>
+        <module>PARA-swing</module>
     </modules>
 
     <build>
