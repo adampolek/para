@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PARA-GUI/PARA-GUI.iml" filepath="$PROJECT_DIR$/PARA-GUI/PARA-GUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PARA-core/PARA-core.iml" filepath="$PROJECT_DIR$/PARA-core/PARA-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PARA-Swing/PARA-swing.iml" filepath="$PROJECT_DIR$/PARA-Swing/PARA-swing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PARA-textmode/PARA-textmode.iml" filepath="$PROJECT_DIR$/PARA-textmode/PARA-textmode.iml" />
+    </modules>
+  </component>
+</project>
