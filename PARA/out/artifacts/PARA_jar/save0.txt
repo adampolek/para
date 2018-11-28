@@ -3,4 +3,4 @@ Stranger
 class Characters.Dwarf 123 1 9 1 20 1 8 1 4 1 22 1
 class Characters.Wizard 71 1 14 1 10 1 14 1 10 1 20 1
 class Characters.Archer 53 1 18 1 10 1 19 1 14 1 10 1
-75
+10000000
