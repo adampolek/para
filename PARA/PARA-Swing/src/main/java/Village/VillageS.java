@@ -26,6 +26,7 @@ public class VillageS extends JFrame implements ActionListener {
     private Game game;
     private JList  heroesList= new JList();
     private DefaultListModel DLM = new DefaultListModel();
+    private boolean innClicked = false;
 
     public VillageS(final Game game){
         this.game=game;
@@ -48,22 +49,48 @@ public class VillageS extends JFrame implements ActionListener {
         heroesList.setBounds(250,100,400,600);
         heroesList.setVisible(false);
 
-        for (final Character character : game.getInn().getCharacters()) {
-            DLM.addElement(character.getName());
-            System.out.println(character.getName());
-        }
+
         innButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("You clicked Inn");
+                if(innClicked==false){
+                    //DLM.removeAllElements();
+                    for (final Character character : game.getInn().getCharacters()) {
+                        DLM.addElement(character.getName());
+                        System.out.println(character.getName());
+                    }
                 heroesList.setModel(DLM);
-                heroesList.setVisible(true);
+                innClicked=true;
+                heroesList.setVisible(innClicked);
+                characterClass.setVisible(innClicked);
+                    characterAttack.setVisible(innClicked);
+                    characterDefence.setVisible(innClicked);
+                    characterHealth.setVisible(innClicked);
+                    characterSpeed.setVisible(innClicked);
+                    characterDodge.setVisible(innClicked);
+                    characterCritChance.setVisible(innClicked);}
+
+                else{
+                    innClicked=false;
+                   // heroesList.setModel(DLM);
+                    heroesList.setVisible(innClicked);
+                    characterClass.setVisible(innClicked);
+                    characterAttack.setVisible(innClicked);
+                    characterDefence.setVisible(innClicked);
+                    characterHealth.setVisible(innClicked);
+                    characterSpeed.setVisible(innClicked);
+                    characterDodge.setVisible(innClicked);
+                    characterCritChance.setVisible(innClicked);
+                    DLM.clear();
+                }
             }
         });
 
         heroesList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 System.out.println("klik na elem listy");
-                    int index=heroesList.getSelectedIndex();
+                    int index;
+                    index=heroesList.getSelectedIndex();
                     Character character=game.getInn().getCharacters().get(index);
                 System.out.println(character.getName()+""+character.getHp());
                     String nameClass = String.valueOf(character.getClass());
