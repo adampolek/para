@@ -8,6 +8,7 @@ public class Gameplay {
        // mainMenu.setVisible(true);
         Game game = new Game();
         game.createFirst();
+        game.getInn().addDwarf();
 
         VillageS village = new VillageS(game);
         village.setVisible(true);

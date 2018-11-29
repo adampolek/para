@@ -16,7 +16,7 @@ public class VillageS extends JFrame implements ActionListener {
     private JButton castleButton = new JButton("Castle");
     private JButton forgeButton = new JButton("Forge");
     private JButton innButton = new JButton("Inn");
-    private JLabel characterName = new JLabel();
+    private JLabel characterClass = new JLabel();
     private JLabel characterHealth = new JLabel();
     private JLabel characterAttack = new JLabel();
     private JLabel characterDefence = new JLabel();
@@ -37,7 +37,7 @@ public class VillageS extends JFrame implements ActionListener {
         addButton(forgeButton,1140,300,150,50);
         addButton(innButton,40,650,150,50);
         addList(heroesList,150,150,220,800);
-        addLabel(characterName,700,150,150,15);
+        addLabel(characterClass,700,150,150,15);
         addLabel(characterHealth,700,170,350,15);
         addLabel(characterAttack,700,190,350,15);
         addLabel(characterDefence,700,210,350,15);
@@ -63,16 +63,17 @@ public class VillageS extends JFrame implements ActionListener {
         heroesList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 System.out.println("klik na elem listy");
-                for (final Character character : game.getInn().getCharacters()) {
+                    int index=heroesList.getSelectedIndex();
+                    Character character=game.getInn().getCharacters().get(index);
+                System.out.println(character.getName()+""+character.getHp());
                     String nameClass = String.valueOf(character.getClass());
-                    characterName.setText("Name "+character.getName());
+                    characterClass.setText(nameClass.substring(17, nameClass.length()));
                     characterAttack.setText("Attack: " + character.getAttack() + "( Next level: " + character.getAttack_level() * 10 + " gold)");
                     characterHealth.setText("Health: " + character.getHp() + "( Next level: " + character.getHp_level() * 10 + " gold)");
                     characterDefence.setText("Defence: " + character.getDefence() + "( Next level: " + character.getDefence_level() * 10 + " gold)");
                     characterSpeed.setText("Speed: " + character.getSpeed() + "( Next level: " + character.getSpeed_level() * 10 + " gold)");
                     characterDodge.setText("Dodge: " + character.getDodge() + "( Next level: " + character.getDodge_level() * 10 + " gold)");
                     characterCritChance.setText("Crit chance: " + character.getCrit_chance() + "( Next level: " + character.getCrit_chance_level() * 10 + " gold)");
-                }
             }
         });
 
