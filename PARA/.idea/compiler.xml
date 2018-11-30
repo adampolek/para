@@ -15,7 +15,7 @@
     <bytecodeTargetLevel>
       <module name="PARA-core" target="8" />
       <module name="PARA-GUI" target="1.5" />
-      <module name="PARA-swing" target="1.5" />
+      <module name="PARA-swing" target="6" />
       <module name="PARA-textmode" target="7" />
     </bytecodeTargetLevel>
   </component>
