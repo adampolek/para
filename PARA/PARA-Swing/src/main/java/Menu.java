@@ -17,6 +17,7 @@ public class Menu extends JPanel {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
+        setBackground(Color.BLACK);
         setLayout(null);
         setBounds(0, 0, screenWidth, screenHeight);
         createMenu();
@@ -38,13 +39,9 @@ public class Menu extends JPanel {
     }
 
     public void addNewGame() {
-        ImageIcon image = new ImageIcon("Button.png");
-        Image image1 = image.getImage();
-        Image newImage = image1.getScaledInstance(screenWidth / 4, screenHeight / 18, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon imageRedy = new ImageIcon(newImage);
         add(newGame);
+        setStyleButton(newGame);
         newGame.setBounds(screenWidth / 19, screenHeight / 2, screenWidth / 4, screenHeight / 18);
-        newGame.setIcon(imageRedy);
         newGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,7 +52,8 @@ public class Menu extends JPanel {
 
     public void addLoadGame() {
         add(loadGame);
-        loadGame.setBounds(screenWidth / 19, screenHeight / 2 + screenHeight / 11, screenWidth / 9, screenHeight / 18);
+        setStyleButton(loadGame);
+        loadGame.setBounds(screenWidth / 19, screenHeight / 2 + screenHeight / 11, screenWidth / 4, screenHeight / 18);
         loadGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,7 +64,8 @@ public class Menu extends JPanel {
 
     public void addOptions() {
         add(options);
-        options.setBounds(screenWidth / 19, screenHeight / 2 + (screenHeight / 11) * 2, screenWidth / 9, screenHeight / 18);
+        setStyleButton(options);
+        options.setBounds(screenWidth / 19, screenHeight / 2 + (screenHeight / 11) * 2, screenWidth / 4, screenHeight / 18);
         options.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,13 +79,28 @@ public class Menu extends JPanel {
 
     public void addExit() {
         add(exit);
-        exit.setBounds(screenWidth / 19, screenHeight / 2 + (screenHeight / 11) * 3, screenWidth / 9, screenHeight / 18);
+        setStyleButton(exit);
+        exit.setBounds(screenWidth / 19, screenHeight / 2 + (screenHeight / 11) * 3, screenWidth / 4, screenHeight / 18);
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
+    }
+
+    public void setStyleButton(JButton button) {
+        ImageIcon icon = new ImageIcon("style/Button.png");
+        Image image = icon.getImage();
+        Image newImage = image.getScaledInstance(screenWidth / 4, screenHeight / 18, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon background = new ImageIcon(newImage);
+        button.setIcon(background);
+        button.setRolloverEnabled(true);
+        button.setBorder(null);
+        button.setForeground(Color.WHITE);
+        button.setFont(new Font("Snap ITC", Font.BOLD, screenHeight / 33));
+        button.setHorizontalTextPosition(JButton.CENTER);
+        button.setVerticalTextPosition(JButton.CENTER);
     }
 
 }
