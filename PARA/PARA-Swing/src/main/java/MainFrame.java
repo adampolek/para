@@ -10,6 +10,7 @@ public class MainFrame extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
         add(newPanel);
+        setLayout(null);
         setVisible(true);
     }
 }

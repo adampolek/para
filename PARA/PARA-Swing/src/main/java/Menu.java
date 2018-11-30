@@ -17,7 +17,8 @@ public class Menu extends JPanel {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
-
+        setLayout(null);
+        setBounds(0, 0, screenWidth, screenHeight);
         createMenu();
     }
 
@@ -37,8 +38,13 @@ public class Menu extends JPanel {
     }
 
     public void addNewGame() {
+        ImageIcon image = new ImageIcon("Button.png");
+        Image image1 = image.getImage();
+        Image newImage = image1.getScaledInstance(screenWidth / 4, screenHeight / 18, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon imageRedy = new ImageIcon(newImage);
         add(newGame);
-        newGame.setBounds(screenWidth / 19, screenHeight / 2, screenWidth / 9, screenHeight / 18);
+        newGame.setBounds(screenWidth / 19, screenHeight / 2, screenWidth / 4, screenHeight / 18);
+        newGame.setIcon(imageRedy);
         newGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
