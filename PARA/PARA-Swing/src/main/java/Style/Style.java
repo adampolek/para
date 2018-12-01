@@ -24,4 +24,11 @@ public class Style {
         title.setFont(new Font("Snap ITC", Font.BOLD, sizeFont));
         title.setHorizontalAlignment(SwingConstants.CENTER);
     }
+
+    public static void styleTextField(JTextField text, int sizeFont) {
+        text.setForeground(Color.red);
+        text.setFont(new Font("Snap ITC", Font.BOLD, sizeFont));
+        text.setHorizontalAlignment(SwingConstants.CENTER);
+        text.setBackground(Color.BLACK);
+    }
 }

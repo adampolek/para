@@ -1,6 +1,7 @@
 package Menu;
 
 import CharactersList.CharactersList;
+import Gameplay.Game;
 import Menu.ElementsMenu.Load;
 import Menu.ElementsMenu.Options;
 import Style.Style;
@@ -54,8 +55,7 @@ public class Menu extends JPanel {
         newGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JPanel gameplay = new JPanel();
-
+                createGamepaly();
             }
         });
     }
@@ -117,6 +117,51 @@ public class Menu extends JPanel {
     }
 
     public void createGamepaly() {
+        final JPanel gameplay = new JPanel();
+        add(gameplay);
+        gameplay.setLayout(null);
+        gameplay.setBackground(Color.BLACK);
+        gameplay.setBounds(screenWidth / 19 + screenWidth / 4, screenHeight / 2, screenWidth / 2 + 20, screenHeight / 4);
+        gameplay.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.DARK_GRAY));
+        JLabel nameText = new JLabel("Enter your name:");
+        nameText.setBounds(10, 10, gameplay.getWidth() - 10, screenHeight / 11);
+        Style.styleTitle(nameText, screenHeight / 22);
+        final JTextField name = new JTextField();
+        name.setBounds(13, screenHeight / 11, gameplay.getWidth() - 26, screenHeight / 22);
+        name.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
+        Style.styleTextField(name, screenHeight / 33);
+        JButton create = new JButton("Create");
+        Style.styleButtonSimple(create, screenWidth / 4, screenHeight / 18, screenHeight / 33);
+        create.setBounds(10, (screenHeight / 11) * 2 - 10, screenWidth / 4, screenHeight / 18);
+        create.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (name.getText().isEmpty()) {
+                    name.setText("Stranger");
+                }
+                Game game = new Game();
+                game.getUser().setName(name.getText());
+                getParent().add(new Load());//TODO - zmien new Loda() na wywolanie wisoki;
+                getParent().repaint();
+                getParent().revalidate();
+                getParent().remove(Menu.this);
+            }
+        });
+        JButton cancel = new JButton("Cancel");
+        Style.styleButtonSimple(cancel, screenWidth / 4, screenHeight / 18, screenHeight / 33);
+        cancel.setBounds(10 + screenWidth / 4, (screenHeight / 11) * 2 - 10, screenWidth / 4, screenHeight / 18);
+        cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                remove(gameplay);
+                repaint();
+                revalidate();
+            }
+        });
+        gameplay.add(nameText);
+        gameplay.add(name);
+        gameplay.add(create);
+        gameplay.add(cancel);
     }
 
 }
