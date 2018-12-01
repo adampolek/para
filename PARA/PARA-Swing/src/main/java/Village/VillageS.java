@@ -3,6 +3,7 @@ package Village;
 import Buildings.Forge;
 import Characters.Archer;
 import Characters.Character;
+import CharactersList.CharactersList;
 import Gameplay.Game;
 import Village.VillageElement.InnS;
 
@@ -13,7 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VillageS extends JFrame implements ActionListener {
+public class VillageS extends JPanel implements ActionListener {
     private JButton castleButton = new JButton("Castle");
     private JButton forgeButton = new JButton("Forge");
     private JButton innButton = new JButton("Inn");
@@ -38,14 +39,25 @@ public class VillageS extends JFrame implements ActionListener {
     private JList  InnHeroesList= new JList();
     private JList  ForgeHeroesList= new JList();
     private DefaultListModel DLM = new DefaultListModel();
+    private int screenWidth;
+    private int screenHeight;
 
     public VillageS(final Game game) {
         this.game = game;
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    /*    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setUndecorated(true);
+        setUndecorated(true);*/
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        screenWidth = (int) screenSize.getWidth();
+        screenHeight = (int) screenSize.getHeight();
+        setBackground(Color.BLACK);
+        setLayout(null);
+        setBounds(0, 0, screenWidth, screenHeight);
         setLayout(null);
         createVillage();
+//        CharactersList charactersList = new CharactersList();
+//        charactersList.addHeroesToList();
+//        charactersList.showListInFrame(this);
 
 
         //addButton(addToTeam,700,20,150,50);
@@ -369,7 +381,7 @@ public class VillageS extends JFrame implements ActionListener {
 
     }
     public void clearScreen(){
-        getContentPane().removeAll();
+        removeAll();
         repaint();
     }
     public void createInn(){

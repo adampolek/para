@@ -1,3 +1,7 @@
+import root.MainFrame;
+
+import static javax.swing.text.html.HTML.Tag.HEAD;
+
 public class Main {
     public static void main(String [] args){
         MainFrame mainFrame = new MainFrame();
