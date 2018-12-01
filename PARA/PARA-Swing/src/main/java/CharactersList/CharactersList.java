@@ -29,7 +29,7 @@ public class CharactersList{
         screenHeight = (int) screenSize.getHeight();
     }
 
-    public CharactersList(Game game, final JFrame panel){
+    public CharactersList(Game game, final JPanel panel){
         listModel = new DefaultListModel();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
@@ -91,7 +91,7 @@ public class CharactersList{
         }
     }
 
-    public void createHeroDetail(JFrame frame){
+    public void createHeroDetail(JPanel frame){
         frame.add(HeroDetails);
         HeroDetails.setBounds(screenWidth/3, screenHeight/3, screenWidth/3, screenHeight/3);
         HeroDetails.setVisible(true);

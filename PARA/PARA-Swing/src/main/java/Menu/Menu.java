@@ -30,9 +30,6 @@ public class Menu extends JPanel {
         setLayout(null);
         setBounds(0, 0, screenWidth, screenHeight);
         createMenu();
-        CharactersList charactersList = new CharactersList();
-        charactersList.addHeroesToList();
-        charactersList.showList(this);
     }
 
     public void createMenu() {

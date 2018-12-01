@@ -1,6 +1,7 @@
 package Village;
 
 import Buildings.Forge;
+import CharactersList.CharactersList;
 import Menu.Menu;
 import Characters.Character;
 import Gameplay.Game;
@@ -374,6 +375,7 @@ public class VillageS extends JPanel implements ActionListener {
                     }
                 }
             });
+         CharactersList charactersList = new CharactersList(game, this);
 
     }
 
