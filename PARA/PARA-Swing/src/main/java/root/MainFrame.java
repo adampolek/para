@@ -1,3 +1,7 @@
+package root;
+
+import Menu.Menu;
+
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
