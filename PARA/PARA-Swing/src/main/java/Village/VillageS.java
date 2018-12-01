@@ -1,11 +1,10 @@
 package Village;
 
 import Buildings.Forge;
-import Characters.Archer;
+import Menu.Menu;
 import Characters.Character;
-import CharactersList.CharactersList;
 import Gameplay.Game;
-import Village.VillageElement.InnS;
+import Style.Style;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -26,7 +25,8 @@ public class VillageS extends JPanel implements ActionListener {
     private JButton upDefence = new JButton("Upgrade defence");
     private JButton upSpeed = new JButton("Upgrade speed");
     private JButton upDodge = new JButton("Upgrade dodge");
-    private JButton upCritChance = new JButton("Upgrade critical chance");
+    private JButton upCritChance = new JButton("Upgrade critical");
+    private JButton backToMenu = new JButton("Back to menu");
     private JLabel characterClass = new JLabel();
     private JLabel upgradeMessage = new JLabel();
     private JLabel characterHealth = new JLabel();
@@ -73,7 +73,7 @@ public class VillageS extends JPanel implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 clearScreen();
                 createInn();
-                addButton(backButton, 700, 300, 150, 50);
+                addButton(backButton, 700, 300, 300, 50);
             }
         });
 
@@ -146,6 +146,16 @@ public class VillageS extends JPanel implements ActionListener {
                     upgradeMessage.setForeground(Color.RED);
                     upgradeMessage.setVisible(true);
                 }
+            }
+        });
+
+        backToMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getParent().add(new Menu());
+                getParent().repaint();
+                getParent().revalidate();
+                getParent().remove(VillageS.this);
             }
         });
 
@@ -264,7 +274,7 @@ public class VillageS extends JPanel implements ActionListener {
             InnHeroesList.addListSelectionListener(new ListSelectionListener() {
                 public void valueChanged(ListSelectionEvent e) {
                         System.out.println("klik na elem listy");
-                    addButton(addToTeam, 700, 360, 150, 50);
+                    addButton(addToTeam, 700, 360, 300, 50);
                     addToTeam.setVisible(false);
                         int index;
                             index = InnHeroesList.getSelectedIndex();
@@ -276,6 +286,13 @@ public class VillageS extends JPanel implements ActionListener {
                             addLabel(characterSpeed, 700, 230, 350, 15);
                             addLabel(characterDodge, 700, 250, 350, 15);
                             addLabel(characterCritChance, 700, 270, 350, 15);
+                            characterClass.setForeground(Color.blue);
+                            characterHealth.setForeground(Color.blue);
+                            characterAttack.setForeground(Color.blue);
+                            characterDefence.setForeground(Color.blue);
+                            characterDodge.setForeground(Color.blue);
+                            characterCritChance.setForeground(Color.blue);
+                            characterSpeed.setForeground(Color.blue);
                             characterHealth.setVisible(true);
                             characterSpeed.setVisible(true);
                             characterDefence.setVisible(true);
@@ -303,17 +320,17 @@ public class VillageS extends JPanel implements ActionListener {
                     int index;
                     index = ForgeHeroesList.getSelectedIndex();
                     System.out.println(index);
-                    addButton(upHealth,400,100,200,50);
+                    addButton(upHealth,400,100,270,50);
                     upHealth.setVisible(false);
-                    addButton(upAttack,400,160,200,50);
+                    addButton(upAttack,400,160,270,50);
                     upAttack.setVisible(false);
-                    addButton(upDefence,400,220,200,50);
+                    addButton(upDefence,400,220,270,50);
                     upDefence.setVisible(false);
-                    addButton(upSpeed,400,280,200,50);
+                    addButton(upSpeed,400,280,270,50);
                     upSpeed.setVisible(false);
-                    addButton(upDodge,400,340,200,50);
+                    addButton(upDodge,400,340,270,50);
                     upDodge.setVisible(false);
-                    addButton(upCritChance,400,400,200,50);
+                    addButton(upCritChance,400,400,270,50);
                     upCritChance.setVisible(false);
                     if(index!=-1) {
                         addLabel(characterClass, 700, 150, 150, 15);
@@ -323,6 +340,13 @@ public class VillageS extends JPanel implements ActionListener {
                         addLabel(characterSpeed, 700, 230, 350, 15);
                         addLabel(characterDodge, 700, 250, 350, 15);
                         addLabel(characterCritChance, 700, 270, 350, 15);
+                        characterClass.setForeground(Color.blue);
+                        characterHealth.setForeground(Color.blue);
+                        characterAttack.setForeground(Color.blue);
+                        characterDefence.setForeground(Color.blue);
+                        characterDodge.setForeground(Color.blue);
+                        characterCritChance.setForeground(Color.blue);
+                        characterSpeed.setForeground(Color.blue);
                         characterHealth.setVisible(true);
                         characterSpeed.setVisible(true);
                         characterDefence.setVisible(true);
@@ -360,6 +384,7 @@ public class VillageS extends JPanel implements ActionListener {
 
     public void addButton(JButton button,int x,int y,int width,int height){
         add(button);
+        Style.styleButtonSimple(button, width, height, screenHeight / 50);
         button.setBounds(x,y,width,height);
        button.addActionListener( this);
     }
@@ -367,6 +392,8 @@ public class VillageS extends JPanel implements ActionListener {
     public void addList(JList jlist,int x,int y,int width,int height){
         add(jlist);
         jlist.setBounds(x,y,width,height);
+        jlist.setForeground(Color.ORANGE);
+        jlist.setBackground(Color.DARK_GRAY);
         //jlist.addActionListener( this);
     }
     public void addLabel(JLabel jLabel,int x,int y,int width,int height){
@@ -404,7 +431,7 @@ public class VillageS extends JPanel implements ActionListener {
             DLM.add(i,game.getUser().getUsersCharacters().get(i).getName());
             System.out.println(game.getUser().getUsersCharacters().get(i).getName());
         }
-        addButton(backButtonForge, 700, 300, 150, 50);
+        addButton(backButtonForge, 700, 300, 300, 50);
         addLabel(upgradeMessage,700,380,150,15);
         upgradeMessage.setVisible(false);
         System.out.println("DLM size "+DLM.size());
@@ -412,8 +439,9 @@ public class VillageS extends JPanel implements ActionListener {
         ForgeHeroesList.setVisible(true);
     }
     public void createVillage(){
-        addButton(castleButton,600,20,150,50);
-        addButton(forgeButton,1140,300,150,50);
-        addButton(innButton,40,650,150,50);
+        addButton(castleButton,600,20,300,50);
+        addButton(forgeButton,1000,300,300,50);
+        addButton(innButton,40,650,300,50);
+        addButton(backToMenu,1000,650,300,50);
     }
 }
