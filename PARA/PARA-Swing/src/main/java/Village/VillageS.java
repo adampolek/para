@@ -3,6 +3,7 @@ package Village;
 import Buildings.Forge;
 import Characters.Archer;
 import Characters.Character;
+import CharactersList.CharactersList;
 import Gameplay.Game;
 import Village.VillageElement.InnS;
 
@@ -38,6 +39,9 @@ public class VillageS extends JFrame implements ActionListener {
         setUndecorated(true);
         setLayout(null);
         createVillage();
+//        CharactersList charactersList = new CharactersList();
+//        charactersList.addHeroesToList();
+//        charactersList.showListInFrame(this);
 
 
         //addButton(addToTeam,700,20,150,50);
