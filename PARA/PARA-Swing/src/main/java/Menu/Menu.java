@@ -140,7 +140,7 @@ public class Menu extends JPanel {
                 Game game = new Game();
                 game.createFirst();
                 game.getUser().setName(name.getText());
-                getParent().add(new VillageS(game));//TODO - zmien new Loda() na wywolanie wisoki;
+                getParent().add(new VillageS(game));
                 getParent().repaint();
                 getParent().revalidate();
                 getParent().remove(Menu.this);

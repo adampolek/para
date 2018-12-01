@@ -1,5 +1,6 @@
 package Menu.ElementsMenu;
 
+import Gameplay.Game;
 import Menu.Menu;
 import Style.Style;
 
@@ -7,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Load extends JPanel {
 
@@ -16,6 +18,7 @@ public class Load extends JPanel {
     private JButton save3 = new JButton("Save 3");
     private JButton save4 = new JButton("Save 4");
     private JButton save5 = new JButton("Save 5");
+    private JLabel isSave = new JLabel("Sorry, there is no such a save yet.");
     private JButton back = new JButton("Back");
     private int screenWidth;
     private int screenHeight;
@@ -37,6 +40,7 @@ public class Load extends JPanel {
         addSave3();
         addSave4();
         addSave5();
+        addIsSave();
         addBack();
 
     }
@@ -54,7 +58,7 @@ public class Load extends JPanel {
         save1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                action("save0.txt");
             }
         });
     }
@@ -66,7 +70,7 @@ public class Load extends JPanel {
         save2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                action("save1.txt");
             }
         });
     }
@@ -78,7 +82,7 @@ public class Load extends JPanel {
         save3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                action("save2.txt");
             }
         });
     }
@@ -90,7 +94,7 @@ public class Load extends JPanel {
         save4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                action("save3.txt");
             }
         });
     }
@@ -102,9 +106,35 @@ public class Load extends JPanel {
         save5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                action("save4.txt");
             }
         });
+    }
+
+    public void addIsSave() {
+        add(isSave);
+        isSave.setBounds(10, screenHeight - screenHeight / 11, screenWidth / 2, screenHeight / 11);
+        Style.styleTitle(isSave, screenHeight / 33);
+        isSave.setHorizontalAlignment(SwingConstants.LEFT);
+        isSave.setVisible(false);
+    }
+
+    public void action(String nazwa) {
+        Game game = new Game();
+        boolean exist = false;
+        try {
+            exist = game.getUser().loadFromFile(nazwa);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (exist) {
+            getParent().add(new Menu());//TODO - tu zmien new Menu() na wywolanie wioski z parametrem game;
+            getParent().repaint();
+            getParent().revalidate();
+            getParent().remove(Load.this);
+        } else {
+            isSave.setVisible(true);
+        }
     }
 
     public void addBack() {
