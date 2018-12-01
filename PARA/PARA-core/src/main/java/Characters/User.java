@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class User {
     private String name;
-    private int gold = 0;
+    private int gold = 10;
     private List<Character> users_characters = new ArrayList<Character>();    //bo przeciez uzytkownik musi miec liste bohaterow
 
     public String getName() {

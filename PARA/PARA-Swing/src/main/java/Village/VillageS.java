@@ -18,8 +18,16 @@ public class VillageS extends JFrame implements ActionListener {
     private JButton forgeButton = new JButton("Forge");
     private JButton innButton = new JButton("Inn");
     private JButton backButton = new JButton("Back");
+    private JButton backButtonForge = new JButton("Back");
     private JButton addToTeam = new JButton("Add to your team");
+    private JButton upHealth = new JButton("Upgrade health");
+    private JButton upAttack = new JButton("Upgrade attack");
+    private JButton upDefence = new JButton("Upgrade defence");
+    private JButton upSpeed = new JButton("Upgrade speed");
+    private JButton upDodge = new JButton("Upgrade dodge");
+    private JButton upCritChance = new JButton("Upgrade critical chance");
     private JLabel characterClass = new JLabel();
+    private JLabel upgradeMessage = new JLabel();
     private JLabel characterHealth = new JLabel();
     private JLabel characterAttack = new JLabel();
     private JLabel characterDefence = new JLabel();
@@ -61,7 +69,6 @@ public class VillageS extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 clearScreen();
                 createForge();
-                addButton(backButton, 700, 300, 150, 50);
             }
         });
 
@@ -77,19 +84,168 @@ public class VillageS extends JFrame implements ActionListener {
             }
         });
 
+        backButtonForge.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                clearScreen();
+                createVillage();
+                //DLM.clear();
+                ForgeHeroesList.clearSelection();
+                remove(ForgeHeroesList);
+                System.out.println("DLM size " + DLM.size());
+                System.out.println("List size "+game.getInn().getCharacters().size());
+            }
+        });
+
         addToTeam.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int heroIndex=InnHeroesList.getSelectedIndex();
                 game.addCharacterToUser(game.getInn().getCharacters().get(heroIndex));
                 DLM.remove(heroIndex);
                 InnHeroesList.setModel(DLM);
-                characterHealth.setVisible(false);
-                characterSpeed.setVisible(false);
+                remove(characterHealth);
+                remove(characterSpeed);
                 characterDefence.setVisible(false);
+                characterClass.setVisible(false);
+                characterHealth.setVisible(false);
                 characterDodge.setVisible(false);
                 characterCritChance.setVisible(false);
                 characterClass.setVisible(false);
                 characterAttack.setVisible(false);
+            }
+        });
+
+        upHealth.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int heroIndex=ForgeHeroesList.getSelectedIndex();
+                boolean to_upgrade=false;
+                to_upgrade=game.getForge().upgradeHp(game.getUser().getUsersCharacters().get(heroIndex),game.getUser());
+                if(to_upgrade){
+                    System.out.println("Upgrade success");
+                    clearScreen();
+                    createForge();
+                    upgradeMessage.setText("Upgrade success");
+                    upgradeMessage.setForeground(Color.GREEN);
+                    upgradeMessage.setVisible(true);
+                }
+                else {
+                    System.out.println("not enough gold");
+                    upgradeMessage.setText("Not enough gold");
+                    upgradeMessage.setForeground(Color.RED);
+                    upgradeMessage.setVisible(true);
+                }
+            }
+        });
+
+        upAttack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int heroIndex=ForgeHeroesList.getSelectedIndex();
+                boolean to_upgrade=false;
+                to_upgrade=game.getForge().upgradeAttack(game.getUser().getUsersCharacters().get(heroIndex),game.getUser());
+                if(to_upgrade){
+                    System.out.println("Upgrade success");
+                    clearScreen();
+                    createForge();
+                    upgradeMessage.setText("Upgrade success");
+                    upgradeMessage.setForeground(Color.GREEN);
+                    upgradeMessage.setVisible(true);
+                }
+                else {
+                    System.out.println("not enough gold");
+                    upgradeMessage.setText("Not enough gold");
+                    upgradeMessage.setForeground(Color.RED);
+                    upgradeMessage.setVisible(true);
+                }
+            }
+        });
+        upDefence.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int heroIndex=ForgeHeroesList.getSelectedIndex();
+                boolean to_upgrade=false;
+                to_upgrade=game.getForge().upgradeDefence(game.getUser().getUsersCharacters().get(heroIndex),game.getUser());
+                if(to_upgrade){
+                    System.out.println("Upgrade success");
+                    clearScreen();
+                    createForge();
+                    upgradeMessage.setText("Upgrade success");
+                    upgradeMessage.setForeground(Color.GREEN);
+                    upgradeMessage.setVisible(true);
+                }
+                else {
+                    System.out.println("not enough gold");
+                    upgradeMessage.setText("Not enough gold");
+                    upgradeMessage.setForeground(Color.RED);
+                    upgradeMessage.setVisible(true);
+                }
+            }
+        });
+        upSpeed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int heroIndex=ForgeHeroesList.getSelectedIndex();
+                boolean to_upgrade=false;
+                to_upgrade=game.getForge().upgradeSpeed(game.getUser().getUsersCharacters().get(heroIndex),game.getUser());
+                if(to_upgrade){
+                    System.out.println("Upgrade success");
+                    clearScreen();
+                    createForge();
+                    upgradeMessage.setText("Upgrade success");
+                    upgradeMessage.setForeground(Color.GREEN);
+                    upgradeMessage.setVisible(true);
+                }
+                else {
+                    System.out.println("not enough gold");
+                    upgradeMessage.setText("Not enough gold");
+                    upgradeMessage.setForeground(Color.RED);
+                    upgradeMessage.setVisible(true);
+                }
+            }
+        });
+
+        upDodge.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int heroIndex=ForgeHeroesList.getSelectedIndex();
+                boolean to_upgrade=false;
+                to_upgrade=game.getForge().upgradeDodge(game.getUser().getUsersCharacters().get(heroIndex),game.getUser());
+                if(to_upgrade){
+                    System.out.println("Upgrade success");
+                    clearScreen();
+                    createForge();
+                    upgradeMessage.setText("Upgrade success");
+                    upgradeMessage.setForeground(Color.GREEN);
+                    upgradeMessage.setVisible(true);
+                }
+                else {
+                    System.out.println("not enough gold");
+                    upgradeMessage.setText("Not enough gold");
+                    upgradeMessage.setForeground(Color.RED);
+                    upgradeMessage.setVisible(true);
+                }
+            }
+        });
+        upCritChance.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int heroIndex=ForgeHeroesList.getSelectedIndex();
+                boolean to_upgrade=false;
+                to_upgrade=game.getForge().upgradeCritChance(game.getUser().getUsersCharacters().get(heroIndex),game.getUser());
+                if(to_upgrade){
+                    System.out.println("Upgrade success");
+                    clearScreen();
+                    createForge();
+                    upgradeMessage.setText("Upgrade success");
+                    upgradeMessage.setForeground(Color.GREEN);
+                    upgradeMessage.setVisible(true);
+                }
+                else {
+                    System.out.println("not enough gold");
+                    upgradeMessage.setText("Not enough gold");
+                    upgradeMessage.setForeground(Color.RED);
+                    upgradeMessage.setVisible(true);
+                }
             }
         });
 
@@ -135,6 +291,18 @@ public class VillageS extends JFrame implements ActionListener {
                     int index;
                     index = ForgeHeroesList.getSelectedIndex();
                     System.out.println(index);
+                    addButton(upHealth,400,100,200,50);
+                    upHealth.setVisible(false);
+                    addButton(upAttack,400,160,200,50);
+                    upAttack.setVisible(false);
+                    addButton(upDefence,400,220,200,50);
+                    upDefence.setVisible(false);
+                    addButton(upSpeed,400,280,200,50);
+                    upSpeed.setVisible(false);
+                    addButton(upDodge,400,340,200,50);
+                    upDodge.setVisible(false);
+                    addButton(upCritChance,400,400,200,50);
+                    upCritChance.setVisible(false);
                     if(index!=-1) {
                         addLabel(characterClass, 700, 150, 150, 15);
                         addLabel(characterHealth, 700, 170, 350, 15);
@@ -150,7 +318,7 @@ public class VillageS extends JFrame implements ActionListener {
                         characterCritChance.setVisible(true);
                         characterClass.setVisible(true);
                         characterAttack.setVisible(true);
-                        addToTeam.setVisible(true);
+                        //addToTeam.setVisible(true);
                         Character character = game.getUser().getUsersCharacters().get(index);
                         System.out.println(character.getName() + "" + character.getHp());
                         String nameClass = String.valueOf(character.getClass());
@@ -161,6 +329,12 @@ public class VillageS extends JFrame implements ActionListener {
                         characterSpeed.setText("Speed: " + character.getSpeed() + "( Next level: " + character.getSpeed_level() * 10 + " gold)");
                         characterDodge.setText("Dodge: " + character.getDodge() + "( Next level: " + character.getDodge_level() * 10 + " gold)");
                         characterCritChance.setText("Crit chance: " + character.getCrit_chance() + "( Next level: " + character.getCrit_chance_level() * 10 + " gold)");
+                        upHealth.setVisible(true);
+                        upAttack.setVisible(true);
+                        upDefence.setVisible(true);
+                        upSpeed.setVisible(true);
+                        upDodge.setVisible(true);
+                        upCritChance.setVisible(true);
                     }
                 }
             });
@@ -218,6 +392,9 @@ public class VillageS extends JFrame implements ActionListener {
             DLM.add(i,game.getUser().getUsersCharacters().get(i).getName());
             System.out.println(game.getUser().getUsersCharacters().get(i).getName());
         }
+        addButton(backButtonForge, 700, 300, 150, 50);
+        addLabel(upgradeMessage,700,380,150,15);
+        upgradeMessage.setVisible(false);
         System.out.println("DLM size "+DLM.size());
         ForgeHeroesList.setModel(DLM);
         ForgeHeroesList.setVisible(true);
