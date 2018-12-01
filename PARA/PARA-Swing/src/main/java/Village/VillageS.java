@@ -19,6 +19,11 @@ public class VillageS extends JPanel implements ActionListener {
     private JButton forgeButton = new JButton("Forge");
     private JButton innButton = new JButton("Inn");
     private JButton backButton = new JButton("Back");
+
+    public Game getGame() {
+        return game;
+    }
+
     private JButton backButtonForge = new JButton("Back");
     private JButton addToTeam = new JButton("Add to your team");
     private JButton upHealth = new JButton("Upgrade health");
@@ -54,7 +59,6 @@ public class VillageS extends JPanel implements ActionListener {
         setBackground(Color.BLACK);
         setLayout(null);
         setBounds(0, 0, screenWidth, screenHeight);
-        setLayout(null);
         createVillage();
 //        CharactersList charactersList = new CharactersList();
 //        charactersList.addHeroesToList();
@@ -377,6 +381,16 @@ public class VillageS extends JPanel implements ActionListener {
             });
          CharactersList charactersList = new CharactersList(game, this);
 
+            castleButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    getParent().add(new CastleS(game));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(VillageS.this);
+                }
+            });
+
     }
 
     public void setGame(Game game) {
@@ -388,7 +402,7 @@ public class VillageS extends JPanel implements ActionListener {
         add(button);
         Style.styleButtonSimple(button, width, height, screenHeight / 50);
         button.setBounds(x,y,width,height);
-       button.addActionListener( this);
+        button.addActionListener( this);
     }
 
     public void addList(JList jlist,int x,int y,int width,int height){
