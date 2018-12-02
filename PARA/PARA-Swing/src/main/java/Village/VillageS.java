@@ -383,7 +383,7 @@ public class VillageS extends JPanel implements ActionListener {
         addButton(innButton,40,650,300,50);
         Style.styleBackground(innButton, "style/Inn.png", "style/InnRollOver.png", 300, 50);
         addButton(backToMenu,1000,650,300,50);
-        //Style.styleBackground(backToMenu, "style/Back.png", "style/BackRollOver.jpg", 300, 50);
+        Style.styleBackground(backToMenu, "style/Back.png", "style/BackRollOver.pngK", 300, 50);
         charactersList.showList(this);
     }
 
