@@ -19,14 +19,12 @@ public class VillageS extends JPanel implements ActionListener {
     private JButton castleButton = new JButton("Castle");
     private JButton forgeButton = new JButton("Forge");
     private JButton innButton = new JButton("Inn");
-    private JButton backButton = new JButton("Back");
 
     public Game getGame() {
         return game;
     }
 
     private JButton backButtonForge = new JButton("Back");
-    private JButton addToTeam = new JButton("Add to your team");
     private JButton upHealth = new JButton("Upgrade health");
     private JButton upAttack = new JButton("Upgrade attack");
     private JButton upDefence = new JButton("Upgrade defence");
@@ -43,7 +41,6 @@ public class VillageS extends JPanel implements ActionListener {
     private JLabel characterDodge = new JLabel();
     private JLabel characterCritChance = new JLabel();
     private Game game;
-    private JList  InnHeroesList= new JList();
     private JList  ForgeHeroesList= new JList();
     private DefaultListModel DLM = new DefaultListModel();
     private int screenWidth;
@@ -52,6 +49,7 @@ public class VillageS extends JPanel implements ActionListener {
 
     public VillageS(final Game game) {
         this.game = game;
+        charactersList = new CharactersList(game, this);
     /*    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);*/
@@ -69,9 +67,6 @@ public class VillageS extends JPanel implements ActionListener {
 
         //addButton(addToTeam,700,20,150,50);
         //JScrollPane scrollableList = new JScrollPane(InnHeroesList); do scrollowania
-        InnHeroesList.setBounds(250, 100, 400, 600);
-        InnHeroesList.setVisible(false);
-
         ForgeHeroesList.setBounds(250, 100, 400, 600);
         ForgeHeroesList.setVisible(false);
 
@@ -95,18 +90,6 @@ public class VillageS extends JPanel implements ActionListener {
             }
         });
 
-        backButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                clearScreen();
-                createVillage();
-                //DLM.clear();
-                InnHeroesList.clearSelection();
-                remove(InnHeroesList);
-                System.out.println("DLM size " + DLM.size());
-                System.out.println("List size "+game.getInn().getCharacters().size());
-            }
-        });
-
         backButtonForge.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 clearScreen();
@@ -116,24 +99,6 @@ public class VillageS extends JPanel implements ActionListener {
                 remove(ForgeHeroesList);
                 System.out.println("DLM size " + DLM.size());
                 System.out.println("List size "+game.getInn().getCharacters().size());
-            }
-        });
-
-        addToTeam.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int heroIndex=InnHeroesList.getSelectedIndex();
-                game.addCharacterToUser(game.getInn().getCharacters().get(heroIndex));
-                DLM.remove(heroIndex);
-                InnHeroesList.setModel(DLM);
-                remove(characterHealth);
-                remove(characterSpeed);
-                characterDefence.setVisible(false);
-                characterClass.setVisible(false);
-                characterHealth.setVisible(false);
-                characterDodge.setVisible(false);
-                characterCritChance.setVisible(false);
-                characterClass.setVisible(false);
-                characterAttack.setVisible(false);
             }
         });
 
@@ -282,49 +247,6 @@ public class VillageS extends JPanel implements ActionListener {
             }
         });
 
-            InnHeroesList.addListSelectionListener(new ListSelectionListener() {
-                public void valueChanged(ListSelectionEvent e) {
-                        System.out.println("klik na elem listy");
-                    addButton(addToTeam, 700, 360, 300, 50);
-                    addToTeam.setVisible(false);
-                        int index;
-                            index = InnHeroesList.getSelectedIndex();
-                        if(index!=-1) {
-                            addLabel(characterClass, 700, 150, 150, 15);
-                            addLabel(characterHealth, 700, 170, 350, 15);
-                            addLabel(characterAttack, 700, 190, 350, 15);
-                            addLabel(characterDefence, 700, 210, 350, 15);
-                            addLabel(characterSpeed, 700, 230, 350, 15);
-                            addLabel(characterDodge, 700, 250, 350, 15);
-                            addLabel(characterCritChance, 700, 270, 350, 15);
-                            characterClass.setForeground(Color.blue);
-                            characterHealth.setForeground(Color.blue);
-                            characterAttack.setForeground(Color.blue);
-                            characterDefence.setForeground(Color.blue);
-                            characterDodge.setForeground(Color.blue);
-                            characterCritChance.setForeground(Color.blue);
-                            characterSpeed.setForeground(Color.blue);
-                            characterHealth.setVisible(true);
-                            characterSpeed.setVisible(true);
-                            characterDefence.setVisible(true);
-                            characterDodge.setVisible(true);
-                            characterCritChance.setVisible(true);
-                            characterClass.setVisible(true);
-                            characterAttack.setVisible(true);
-                            addToTeam.setVisible(true);
-                            Character character = game.getInn().getCharacters().get(index);
-                            System.out.println(character.getName() + "" + character.getHp());
-                            String nameClass = String.valueOf(character.getClass());
-                            characterClass.setText(nameClass.substring(17, nameClass.length()));
-                            characterAttack.setText("Attack: " + character.getAttack() + "( Next level: " + character.getAttack_level() * 10 + " gold)");
-                            characterHealth.setText("Health: " + character.getHp() + "( Next level: " + character.getHp_level() * 10 + " gold)");
-                            characterDefence.setText("Defence: " + character.getDefence() + "( Next level: " + character.getDefence_level() * 10 + " gold)");
-                            characterSpeed.setText("Speed: " + character.getSpeed() + "( Next level: " + character.getSpeed_level() * 10 + " gold)");
-                            characterDodge.setText("Dodge: " + character.getDodge() + "( Next level: " + character.getDodge_level() * 10 + " gold)");
-                            characterCritChance.setText("Crit chance: " + character.getCrit_chance() + "( Next level: " + character.getCrit_chance_level() * 10 + " gold)");
-                        }}
-            });
-
             ForgeHeroesList.addListSelectionListener(new ListSelectionListener() {
                 public void valueChanged(ListSelectionEvent e) {
                     System.out.println("klik na elem listy");
@@ -385,7 +307,6 @@ public class VillageS extends JPanel implements ActionListener {
                     }
                 }
             });
-         charactersList = new CharactersList(game, this);
          charactersList.showList(this);
 
             castleButton.addActionListener(new ActionListener() {
@@ -434,21 +355,7 @@ public class VillageS extends JPanel implements ActionListener {
         removeAll();
         repaint();
     }
-    public void createInn(){
-        addList(InnHeroesList,150,100,220,600);
-        System.out.println("You clicked Inn");
-            DLM.removeAllElements();
 
-            for (int i=0;i<game.getInn().getCharacters().size();i++) {
-                DLM.add(i,game.getInn().getCharacters().get(i).getName());
-                System.out.println(game.getInn().getCharacters().get(i).getName());
-            }
-        System.out.println("DLM size "+DLM.size());
-            InnHeroesList.setModel(DLM);
-            InnHeroesList.setVisible(true);
-        charactersList.showList(this);
-
-    }
     public void createForge(){
         addList(ForgeHeroesList,150,100,220,600);
         DLM.removeAllElements();
@@ -470,5 +377,6 @@ public class VillageS extends JPanel implements ActionListener {
         addButton(forgeButton,1000,300,300,50);
         addButton(innButton,40,650,300,50);
         addButton(backToMenu,1000,650,300,50);
+        charactersList.showList(this);
     }
 }

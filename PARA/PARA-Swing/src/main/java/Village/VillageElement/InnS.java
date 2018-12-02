@@ -98,8 +98,9 @@ public class InnS extends JPanel{
                 characterHealth.setVisible(false);
                 characterDodge.setVisible(false);
                 characterCritChance.setVisible(false);
-                characterClass.setVisible(false);
+                characterSpeed.setVisible(false);
                 characterAttack.setVisible(false);
+                innPanel.setVisible(false);
             }
         });
         InnHeroesList.addListSelectionListener(new ListSelectionListener() {
@@ -143,6 +144,7 @@ public class InnS extends JPanel{
                     characterCritChance.setFont(new Font("Snap ITC", Font.BOLD, 20));
                     characterSpeed.setForeground(Color.red);
                     characterSpeed.setFont(new Font("Snap ITC", Font.BOLD, 20));
+                    imageLabel.setVisible(true);
                     characterHealth.setVisible(true);
                     characterSpeed.setVisible(true);
                     characterDefence.setVisible(true);
