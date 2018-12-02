@@ -42,9 +42,9 @@ public class InnS extends JPanel{
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
-        setBackground(Color.BLACK);
-        setLayout(null);
         setBounds(0, 0, (int)(screenWidth), screenHeight);
+        setLayout(null);
+        setBackground(Color.BLACK);
         innPanel = new JPanel();
         innPanel.setLayout(null);
         innPanel.setBackground(Color.BLACK);
@@ -184,6 +184,12 @@ public class InnS extends JPanel{
 
     public Game getGame() {
         return game;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(new ImageIcon("style/Village.png").getImage(), 0,0, (int) (this.getWidth()/1.2),this.getHeight(),this);
     }
 
 }

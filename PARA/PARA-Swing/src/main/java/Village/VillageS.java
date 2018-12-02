@@ -56,9 +56,9 @@ public class VillageS extends JPanel implements ActionListener {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
+        setBounds(0, 0, screenWidth, screenHeight);
         setBackground(Color.BLACK);
         setLayout(null);
-        setBounds(0, 0, screenWidth, screenHeight);
         createVillage();
 //        CharactersList charactersList = new CharactersList();
 //        charactersList.addHeroesToList();
@@ -379,4 +379,11 @@ public class VillageS extends JPanel implements ActionListener {
         addButton(backToMenu,1000,650,300,50);
         charactersList.showList(this);
     }
+
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(new ImageIcon("style/Village.png").getImage(), 0,0, (int) (this.getWidth()/1.2),this.getHeight(),this);
+    }
+
 }

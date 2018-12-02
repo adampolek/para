@@ -107,5 +107,11 @@ public class CastleS extends JPanel{
         userCharacters.setModel(DLM);
     }
 
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(new ImageIcon("style/Village.png").getImage(), 0,0, (int) (this.getWidth()/1.2),this.getHeight(),this);
+    }
+
 }
 
