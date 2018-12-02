@@ -1,30 +1,32 @@
 package Menu.ElementsMenu;
 
-import Gameplay.Game;
-import Menu.Menu;
 import Style.Style;
-import Village.VillageS;
-
+import Gameplay.Game;
+import Menu.GameMenu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class Load extends JPanel {
+public class GameSave extends JPanel {
 
-    private JLabel title = new JLabel("Load Game");
+    private JLabel title = new JLabel("Save Game");
     private JButton save1 = new JButton("Save 1");
     private JButton save2 = new JButton("Save 2");
     private JButton save3 = new JButton("Save 3");
     private JButton save4 = new JButton("Save 4");
     private JButton save5 = new JButton("Save 5");
-    private JLabel isSave = new JLabel("Sorry, there is no such a save yet.");
+    private JLabel isSave = new JLabel("Saved game.");
     private JButton back = new JButton("Back");
+    private Game game;
+    private JPanel backPanel;
     private int screenWidth;
     private int screenHeight;
 
-    public Load() {
+    public GameSave(Game game, JPanel backPanel) {
+        this.backPanel = backPanel;
+        this.game = game;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
@@ -120,22 +122,13 @@ public class Load extends JPanel {
         isSave.setVisible(false);
     }
 
-    public void action(String nazwa) {
-        Game game = new Game();
-        boolean exist = false;
+    public void action(String name) {
         try {
-            exist = game.getUser().loadFromFile(nazwa);
+            game.getUser().saveToFile(name);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (exist) {
-            getParent().add(new VillageS(game));
-            getParent().repaint();
-            getParent().revalidate();
-            getParent().remove(Load.this);
-        } else {
-            isSave.setVisible(true);
-        }
+        isSave.setVisible(true);
     }
 
     public void addBack() {
@@ -145,10 +138,10 @@ public class Load extends JPanel {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                getParent().add(new Menu());
+                getParent().add(new GameMenu(game, backPanel));
                 getParent().repaint();
                 getParent().revalidate();
-                getParent().remove(Load.this);
+                getParent().remove(GameSave.this);
             }
         });
     }

@@ -1,6 +1,5 @@
 package Menu;
 
-import CharactersList.CharactersList;
 import Gameplay.Game;
 import Menu.ElementsMenu.Load;
 import Menu.ElementsMenu.Options;
@@ -98,20 +97,6 @@ public class Menu extends JPanel {
                 System.exit(0);
             }
         });
-    }
-
-    public void setStyleButton(JButton button) {
-        ImageIcon icon = new ImageIcon("style/Button.png");
-        Image image = icon.getImage();
-        Image newImage = image.getScaledInstance(screenWidth / 4, screenHeight / 18, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon background = new ImageIcon(newImage);
-        button.setIcon(background);
-        button.setRolloverEnabled(true);
-        button.setBorder(null);
-        button.setForeground(Color.WHITE);
-        button.setFont(new Font("Snap ITC", Font.BOLD, screenHeight / 33));
-        button.setHorizontalTextPosition(JButton.CENTER);
-        button.setVerticalTextPosition(JButton.CENTER);
     }
 
     public void createGamepaly() {

@@ -1,6 +1,8 @@
 package Menu.ElementsMenu;
 
+import Gameplay.Game;
 import Menu.Menu;
+import Menu.GameMenu;
 import Style.Style;
 import root.Music;
 
@@ -28,10 +30,29 @@ public class Options extends JPanel {
     private JLabel description5 = new JLabel("Good luck! :)");
     private JButton save = new JButton("Save");
     private JButton back = new JButton("Back");
+    private JPanel backPanel = null;
+    private Game game;
     private int screenWidth;
     private int screenHeight;
 
     public Options() {
+        try {
+            volume = new JSlider(JSlider.HORIZONTAL, 0, 10,loadFromFile());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        screenWidth = (int) screenSize.getWidth();
+        screenHeight = (int) screenSize.getHeight();
+        setBackground(Color.BLACK);
+        setLayout(null);
+        setBounds(0, 0, screenWidth, screenHeight);
+        createOptions();
+    }
+
+    public Options(Game game, JPanel panel) {
+        this.game = game;
+        this.backPanel = panel;
         try {
             volume = new JSlider(JSlider.HORIZONTAL, 0, 10,loadFromFile());
         } catch (FileNotFoundException e) {
@@ -109,7 +130,11 @@ public class Options extends JPanel {
                 } catch (FileNotFoundException e1) {
                     e1.printStackTrace();
                 }
-                getParent().add(new Menu());
+                if(backPanel == null) {
+                    getParent().add(new Menu());
+                }else {
+                    getParent().add(new GameMenu(game, backPanel));
+                }
                 getParent().repaint();
                 getParent().revalidate();
                 getParent().remove(Options.this);

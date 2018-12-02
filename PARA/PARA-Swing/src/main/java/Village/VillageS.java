@@ -2,7 +2,7 @@ package Village;
 
 import Buildings.Forge;
 import CharactersList.CharactersList;
-import Menu.Menu;
+import Menu.GameMenu;
 import Characters.Character;
 import Gameplay.Game;
 import Style.Style;
@@ -157,7 +157,7 @@ public class VillageS extends JPanel implements ActionListener {
         backToMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                getParent().add(new Menu());
+                getParent().add(new GameMenu(game, VillageS.this));
                 getParent().repaint();
                 getParent().revalidate();
                 getParent().remove(VillageS.this);
