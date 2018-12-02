@@ -60,4 +60,20 @@ public class Style {
         panel.add(imageBackground, 0);
         panel.setLayout(null);
     }
+
+    public static void styleBackground(JButton button, String path,String pathRollOver, int widthImage, int heightImage) {
+        ImageIcon icon = new ImageIcon(path);
+        Image image = icon.getImage();
+        Image newImage = image.getScaledInstance(widthImage, heightImage, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon background = new ImageIcon(newImage);
+        ImageIcon iconRoll = new ImageIcon(pathRollOver);
+        Image imageRoll = iconRoll.getImage();
+        Image newImageRoll = imageRoll.getScaledInstance(widthImage, heightImage, java.awt.Image.SCALE_SMOOTH);
+        ImageIcon backgroundRoll = new ImageIcon(newImageRoll);
+        button.setIcon(background);
+        button.setRolloverIcon(backgroundRoll);
+        button.setBorder(null);
+        button.setText(null);
+
+    }
 }

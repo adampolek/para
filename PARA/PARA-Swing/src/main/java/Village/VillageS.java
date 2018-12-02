@@ -6,6 +6,7 @@ import Menu.GameMenu;
 import Characters.Character;
 import Gameplay.Game;
 import Style.Style;
+import Village.VillageElement.ForgeS;
 import Village.VillageElement.InnS;
 
 import javax.swing.*;
@@ -85,8 +86,10 @@ public class VillageS extends JPanel implements ActionListener {
 
         forgeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                clearScreen();
-                createForge();
+                getParent().add(new ForgeS(game));
+                getParent().repaint();
+                getParent().revalidate();
+                getParent().remove(VillageS.this);
             }
         });
 
@@ -374,9 +377,13 @@ public class VillageS extends JPanel implements ActionListener {
     }
     public void createVillage(){
         addButton(castleButton,600,20,300,50);
+        Style.styleBackground(castleButton, "style/Castle.png", "style/CastleRollOver.jpg", 300, 50);
         addButton(forgeButton,1000,300,300,50);
+        Style.styleBackground(forgeButton, "style/Forge.png", "style/ForgeRollOver.png", 300, 50);
         addButton(innButton,40,650,300,50);
+        Style.styleBackground(innButton, "style/Inn.png", "style/InnRollOver.png", 300, 50);
         addButton(backToMenu,1000,650,300,50);
+        //Style.styleBackground(backToMenu, "style/Back.png", "style/BackRollOver.jpg", 300, 50);
         charactersList.showList(this);
     }
 
