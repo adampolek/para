@@ -37,7 +37,7 @@ public class CharactersList{
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 System.out.println("GOOOL, BRAWO POLAAACYYY!!!!!!");
-                createHeroDetail(panel);
+                //createHeroDetail(panel);
             }
         });
     }
@@ -79,13 +79,6 @@ public class CharactersList{
         list.setVisible(true);
     }
 
-//    public void showListInFrame(JFrame frame){
-//        frame.add(list);
-//        list.setBounds((int)(screenWidth/(double)1.2),0,screenWidth-(int)(screenWidth/(double)1.2),screenHeight);
-//        list.setModel(listModel);
-//        list.setVisible(true);
-//    }
-
     public String getImageName(String klasa){
         if (klasa.equals("Dwarf")) {
             return "dwarf.png";
@@ -122,5 +115,6 @@ public class CharactersList{
         charactersName.setBounds(panelWidth/4, panelHeight/30, (int)(panelHeight/(1.2)), panelHeight/4);
         Style.styleTitle(charactersName, screenHeight/40);
         HeroDetails.add(charactersName);
+        //HeroDetails.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.DARK_GRAY));
     }
 }
