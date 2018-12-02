@@ -1,11 +1,9 @@
 package Village.VillageElement;
 
-import Characters.Archer;
 import Characters.Character;
 import CharactersList.CharactersList;
 import Gameplay.Game;
 import Style.Style;
-import Village.CastleS;
 import Village.VillageS;
 
 import javax.swing.*;
@@ -22,7 +20,7 @@ public class InnS extends JPanel{
     private int screenWidth;
     private int screenHeight;
     private JPanel innPanel;
-    private JList  InnHeroesList= new JList();
+    private JList innHeroesList = new JList();
     private DefaultListModel DLM = new DefaultListModel();
     private JButton backButton = new JButton("Back");
     private JButton addToTeam = new JButton("Add to team");
@@ -56,10 +54,10 @@ public class InnS extends JPanel{
     }
 
     public void createInn(){
-        innPanel.add(InnHeroesList);
-        InnHeroesList.setBounds(innPanel.getWidth()/10 , innPanel.getHeight()/10 , innPanel.getWidth()/3,(int)(innPanel.getHeight()/1.5));
-        InnHeroesList.setForeground(Color.ORANGE);
-        InnHeroesList.setBackground(Color.DARK_GRAY);
+        innPanel.add(innHeroesList);
+        innHeroesList.setBounds(innPanel.getWidth()/10 , innPanel.getHeight()/10 , innPanel.getWidth()/3,(int)(innPanel.getHeight()/1.5));
+        innHeroesList.setForeground(Color.ORANGE);
+        innHeroesList.setBackground(Color.DARK_GRAY);
         System.out.println("You clicked Inn");
         DLM.removeAllElements();
 
@@ -68,8 +66,8 @@ public class InnS extends JPanel{
             System.out.println(game.getInn().getCharacters().get(i).getName());
         }
         System.out.println("DLM size "+DLM.size());
-        InnHeroesList.setModel(DLM);
-        InnHeroesList.setVisible(true);
+        innHeroesList.setModel(DLM);
+        innHeroesList.setVisible(true);
         charactersList = new CharactersList(game, this);
         charactersList.showList(this);
         backButton.addActionListener(new ActionListener() {
@@ -82,15 +80,15 @@ public class InnS extends JPanel{
             }
         });
         innPanel.add(backButton);
-        Style.styleButtonSimple(backButton, innPanel.getWidth()/ 4, innPanel.getHeight()/ 18, 33);
+        Style.styleButtonSimple(backButton, innPanel.getWidth()/ 4, innPanel.getHeight()/ 18, screenWidth/58);
         backButton.setBounds((int) (innPanel.getWidth() / (1.4)), (int) (innPanel.getHeight() / 1.1), innPanel.getWidth()/ 4, innPanel.getHeight()/ 18);
         backButton.setVisible(true);
         addToTeam.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int heroIndex=InnHeroesList.getSelectedIndex();
+                int heroIndex= innHeroesList.getSelectedIndex();
                 game.addCharacterToUser(game.getInn().getCharacters().get(heroIndex));
                 DLM.remove(heroIndex);
-                InnHeroesList.setModel(DLM);
+                innHeroesList.setModel(DLM);
                 remove(characterHealth);
                 remove(characterSpeed);
                 characterDefence.setVisible(false);
@@ -102,15 +100,15 @@ public class InnS extends JPanel{
                 characterAttack.setVisible(false);
             }
         });
-        InnHeroesList.addListSelectionListener(new ListSelectionListener() {
+        innHeroesList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 System.out.println("klik na elem listy");
                 innPanel.add(addToTeam);
-                Style.styleButtonSimple(addToTeam, innPanel.getWidth()/ 4, innPanel.getHeight()/ 18, 33);
+                Style.styleButtonSimple(addToTeam, innPanel.getWidth()/ 4, innPanel.getHeight()/ 18, screenWidth/58);
                 addToTeam.setBounds((int) (innPanel.getWidth() / (2.2)), (int) (innPanel.getHeight() / 1.1), innPanel.getWidth()/ 4, innPanel.getHeight()/ 18);
                 addToTeam.setVisible(false);
                 int index;
-                index = InnHeroesList.getSelectedIndex();
+                index = innHeroesList.getSelectedIndex();
                 if(index!=-1) {
                     innPanel.add(characterClass);
                     innPanel.add(characterHealth);
@@ -129,20 +127,20 @@ public class InnS extends JPanel{
                     characterDodge.setBounds(innPanel.getWidth()/2 , innPanel.getHeight()/4 + innPanel.getHeight()/25 * 5, innPanel.getWidth()/2, innPanel.getHeight()/50);
                     characterCritChance.setBounds(innPanel.getWidth()/2 , innPanel.getHeight()/4 + innPanel.getHeight()/25 * 6, innPanel.getWidth()/2, innPanel.getHeight()/50);
                     characterSpeed.setBounds(innPanel.getWidth()/2 , innPanel.getHeight()/4 + innPanel.getHeight()/25 * 7, innPanel.getWidth()/2, innPanel.getHeight()/50);
-                    characterClass.setFont(new Font("Snap ITC", Font.BOLD, 40));
+                    characterClass.setFont(new Font("Snap ITC", Font.BOLD, screenWidth/48));
                     characterClass.setForeground(new Color(128,0,0));
-                    characterHealth.setFont(new Font("Snap ITC", Font.BOLD, 20));
+                    characterHealth.setFont(new Font("Snap ITC", Font.BOLD, screenWidth/96));
                     characterHealth.setForeground(Color.red);
                     characterAttack.setForeground(Color.red);
-                    characterAttack.setFont((new Font("Snap ITC", Font.BOLD, 20)));
+                    characterAttack.setFont((new Font("Snap ITC", Font.BOLD, screenWidth/96)));
                     characterDefence.setForeground(Color.red);
-                    characterDefence.setFont(new Font("Snap ITC", Font.BOLD, 20));
+                    characterDefence.setFont(new Font("Snap ITC", Font.BOLD, screenWidth/96));
                     characterDodge.setForeground(Color.red);
-                    characterDodge.setFont(new Font("Snap ITC", Font.BOLD, 20));
+                    characterDodge.setFont(new Font("Snap ITC", Font.BOLD, screenWidth/96));
                     characterCritChance.setForeground(Color.red);
-                    characterCritChance.setFont(new Font("Snap ITC", Font.BOLD, 20));
+                    characterCritChance.setFont(new Font("Snap ITC", Font.BOLD, screenWidth/96));
                     characterSpeed.setForeground(Color.red);
-                    characterSpeed.setFont(new Font("Snap ITC", Font.BOLD, 20));
+                    characterSpeed.setFont(new Font("Snap ITC", Font.BOLD, screenWidth/96));
                     characterHealth.setVisible(true);
                     characterSpeed.setVisible(true);
                     characterDefence.setVisible(true);

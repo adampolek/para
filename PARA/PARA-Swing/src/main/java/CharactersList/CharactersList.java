@@ -14,7 +14,7 @@ public class CharactersList{
 
     DefaultListModel listModel;
     JList list;
-    final JPanel HeroDetails = new JPanel();;
+    final JPanel heroDetails = new JPanel();;
     private int screenWidth;
     private int screenHeight;
     private ArrayList<Character> characters = new ArrayList<>();
@@ -53,7 +53,9 @@ public class CharactersList{
 
     public void showList(JPanel panel){
         panel.add(list);
-        list.setBounds((int)(screenWidth/(double)1.2),0,screenWidth-(int)(screenWidth/(double)1.2),screenHeight);
+        list.setBounds((int)(screenWidth/1.2),0,screenWidth-(int)(screenWidth/1.2),screenHeight);
+        list.setForeground(Color.ORANGE);
+        list.setBackground(Color.DARK_GRAY);
         list.setModel(listModel);
         list.setVisible(true);
     }
@@ -66,7 +68,7 @@ public class CharactersList{
     }
 
     public JList getCharacters(){
-        list.setBounds((int)(screenWidth/(double)1.2),0,screenWidth-(int)(screenWidth/(double)1.2),screenHeight);
+        list.setBounds((int)(screenWidth/1.2),0,screenWidth-(int)(screenWidth/1.2),screenHeight);
         list.setModel(listModel);
         list.setVisible(true);
         return  list;
@@ -74,7 +76,7 @@ public class CharactersList{
 
     public void showList(JFrame panel){
         panel.add(list);
-        list.setBounds((int)(screenWidth/(double)1.2),0,screenWidth-(int)(screenWidth/(double)1.2),screenHeight);
+        list.setBounds((int)(screenWidth/1.2),0,screenWidth-(int)(screenWidth/1.2),screenHeight);
         list.setModel(listModel);
         list.setVisible(true);
     }
@@ -96,25 +98,25 @@ public class CharactersList{
     }
 
     public void createHeroDetail(JPanel frame){
-        frame.add(HeroDetails);
-        HeroDetails.setBounds(screenWidth/3, screenHeight/3, screenWidth/3, screenHeight/3);
-        HeroDetails.setVisible(true);
-        HeroDetails.setBackground(Color.black);
+        frame.add(heroDetails);
+        heroDetails.setBounds(screenWidth/3, screenHeight/3, screenWidth/3, screenHeight/3);
+        heroDetails.setVisible(true);
+        heroDetails.setBackground(Color.black);
         JButton backButton = new JButton("BACK");
-        int panelWidth = HeroDetails.getWidth();
-        int panelHeight = HeroDetails.getHeight();
+        int panelWidth = heroDetails.getWidth();
+        int panelHeight = heroDetails.getHeight();
         Style.styleButtonSimple(backButton, panelWidth / 4, panelHeight / 18, screenHeight/60);
         backButton.setBounds((int) (panelWidth / (1.4)), (int) (panelHeight / 1.1), panelWidth / 4, panelHeight / 18);
-        HeroDetails.add(backButton);
+        heroDetails.add(backButton);
         int index;
         index = list.getSelectedIndex();
         JLabel imageLabel = new JLabel(new ImageIcon(getImageName(characters.get(index).getType())));
         imageLabel.setBounds(panelWidth/40,panelHeight/30, panelHeight/4, panelHeight/4);
-        HeroDetails.add(imageLabel);
+        heroDetails.add(imageLabel);
         JLabel charactersName = new JLabel(characters.get(index).getName());
         charactersName.setBounds(panelWidth/4, panelHeight/30, (int)(panelHeight/(1.2)), panelHeight/4);
         Style.styleTitle(charactersName, screenHeight/40);
-        HeroDetails.add(charactersName);
+        heroDetails.add(charactersName);
         //HeroDetails.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.DARK_GRAY));
     }
 }
