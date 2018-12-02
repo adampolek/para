@@ -1,5 +1,6 @@
 package Village;
 
+import CharactersList.CharactersList;
 import Gameplay.Game;
 import Style.Style;
 import javafx.scene.control.RadioButton;
@@ -23,9 +24,11 @@ public class CastleS extends JPanel{
     private JList userCharacters = new JList();
     private JList selectedCharacters = new JList();
     private DefaultListModel DLM = new DefaultListModel();
+    CharactersList charactersList;
 
     public CastleS(final Game game){
         this.game=game;
+        charactersList = new CharactersList(game, this);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
@@ -34,6 +37,7 @@ public class CastleS extends JPanel{
         setBounds(0, 0, screenWidth, screenHeight);
         createCastle();
         loadUserCharacters();
+        charactersList.showList(this);
 
         back.addActionListener(new ActionListener() {
             @Override

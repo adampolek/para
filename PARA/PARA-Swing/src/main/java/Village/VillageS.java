@@ -6,6 +6,7 @@ import Menu.GameMenu;
 import Characters.Character;
 import Gameplay.Game;
 import Style.Style;
+import Village.VillageElement.InnS;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -47,6 +48,7 @@ public class VillageS extends JPanel implements ActionListener {
     private DefaultListModel DLM = new DefaultListModel();
     private int screenWidth;
     private int screenHeight;
+    CharactersList charactersList;
 
     public VillageS(final Game game) {
         this.game = game;
@@ -77,8 +79,12 @@ public class VillageS extends JPanel implements ActionListener {
         innButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 clearScreen();
-                createInn();
-                addButton(backButton, 700, 300, 300, 50);
+//                createInn();
+//                addButton(backButton, 700, 300, 300, 50);
+                getParent().add(new InnS(game));
+                getParent().repaint();
+                getParent().revalidate();
+                getParent().remove(VillageS.this);
             }
         });
 
@@ -379,7 +385,8 @@ public class VillageS extends JPanel implements ActionListener {
                     }
                 }
             });
-         CharactersList charactersList = new CharactersList(game, this);
+         charactersList = new CharactersList(game, this);
+         charactersList.showList(this);
 
             castleButton.addActionListener(new ActionListener() {
                 @Override
@@ -439,6 +446,8 @@ public class VillageS extends JPanel implements ActionListener {
         System.out.println("DLM size "+DLM.size());
             InnHeroesList.setModel(DLM);
             InnHeroesList.setVisible(true);
+        charactersList.showList(this);
+
     }
     public void createForge(){
         addList(ForgeHeroesList,150,100,220,600);
@@ -453,6 +462,8 @@ public class VillageS extends JPanel implements ActionListener {
         System.out.println("DLM size "+DLM.size());
         ForgeHeroesList.setModel(DLM);
         ForgeHeroesList.setVisible(true);
+        charactersList.showList(this);
+
     }
     public void createVillage(){
         addButton(castleButton,600,20,300,50);

@@ -24,8 +24,8 @@ public class Options extends JPanel {
     private JLabel volumeText = new JLabel("Volume");
     private JSlider volume;
     private JLabel description1 = new JLabel("Control:");
-    private JLabel description2 = new JLabel("Move with arrows");
-    private JLabel description3 = new JLabel("Press Enter to select chosen option");
+    private JLabel description2 = new JLabel("Use your mouse");
+    private JLabel description3 = new JLabel("to navigate in the whole game");
     private JLabel description4 = new JLabel("Press Esc to go back");
     private JLabel description5 = new JLabel("Good luck! :)");
     private JButton save = new JButton("Save");

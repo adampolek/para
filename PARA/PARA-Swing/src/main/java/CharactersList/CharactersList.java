@@ -4,8 +4,6 @@ import Characters.Character;
 import Gameplay.Game;
 
 import javax.swing.*;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
@@ -35,7 +33,6 @@ public class CharactersList{
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
         addHeroesToList(game);
-        showList(panel);
         list.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -59,6 +56,20 @@ public class CharactersList{
         list.setBounds((int)(screenWidth/(double)1.2),0,screenWidth-(int)(screenWidth/(double)1.2),screenHeight);
         list.setModel(listModel);
         list.setVisible(true);
+    }
+
+    public void showListInPanel(JPanel panel){
+        panel.add(list);
+        list.setBounds(0,0,screenWidth,screenHeight);
+        list.setModel(listModel);
+        list.setVisible(true);
+    }
+
+    public JList getCharacters(){
+        list.setBounds((int)(screenWidth/(double)1.2),0,screenWidth-(int)(screenWidth/(double)1.2),screenHeight);
+        list.setModel(listModel);
+        list.setVisible(true);
+        return  list;
     }
 
     public void showList(JFrame panel){
