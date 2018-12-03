@@ -21,6 +21,10 @@ public class FightS extends JPanel {
     private JButton attack2 = new JButton();
     private JButton attack3 = new JButton();
     private List<JLabel> heroes = new ArrayList<>();
+    private List<JLabel> hpHeroes = new ArrayList<>();
+    private List<JLabel> stateHero = new ArrayList<>();
+    private List<JLabel> hpEnemis = new ArrayList<>();
+    private List<JLabel> stateEnemy = new ArrayList<>();
     private List<JButton> enemies = new ArrayList<>();
 
     public FightS(Game game) {
@@ -90,17 +94,42 @@ public class FightS extends JPanel {
     }
 
     public void addHeroes() {
-
+        int y = (30 + (screenHeight / 3) * 2 - (screenHeight / 7 + 30) * game.getCharacterInMission().size()) / 2;
+        for (Character character : game.getCharacterInMission()) {
+            JLabel hero = new JLabel(character.getName());
+            JLabel hpText = new JLabel(character.getHp() + " hp");
+            hpText.setBounds(0, y, (screenHeight / 8) * 2, screenHeight / 7);
+            Style.styleTitle(hpText, screenHeight / 24);
+            hpText.setHorizontalAlignment(SwingConstants.RIGHT);
+            add(hpText);
+            hpHeroes.add(hpText);
+            add(hero);
+            heroes.add(hero);
+            hero.setBounds((screenHeight / 7) * 2, y, screenHeight / 7, screenHeight / 7);
+            hero.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
+            hero.setBackground(Color.BLACK);
+            hero.setForeground(Color.WHITE);
+            y = y + screenHeight / 7 + 30;
+        }
     }
 
     public void addEnemies() {
-        int y = (screenHeight / 3) * 2 / game.getEnemies().size() - 90;
+        int y = (30 + (screenHeight / 3) * 2 - (screenHeight / 7 + 30) * game.getEnemies().size()) / 2;
         for (Character character : game.getEnemies()) {
             JButton enemy = new JButton(character.getName());
+            JLabel hpText = new JLabel(character.getHp() + " hp");
+            hpText.setBounds(screenWidth - (screenHeight / 8) * 2, y, (screenHeight / 8) * 2, screenHeight / 7);
+            Style.styleTitle(hpText, screenHeight / 24);
+            hpText.setHorizontalAlignment(SwingConstants.LEFT);
+            add(hpText);
+            hpEnemis.add(hpText);
             add(enemy);
             enemies.add(enemy);
-            enemy.setBounds(screenWidth - (screenHeight / 3) * 2 / 3 - 50, y, (screenHeight / 3) * 2 / 3, (screenHeight / 3) * 2 / 3);
-            y = y + (screenHeight / 3) * 2 / 3 + 30;
+            enemy.setBounds(screenWidth - (screenHeight / 7) * 3, y, screenHeight / 7, screenHeight / 7);
+            enemy.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
+            enemy.setBackground(Color.BLACK);
+            enemy.setForeground(Color.WHITE);
+            y = y + screenHeight / 7 + 30;
         }
     }
 
