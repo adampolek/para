@@ -7,32 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39ba896a-f09c-4723-a1f1-59d23055ad96" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/src/main/java/Menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/src/main/java/Menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/src/main/java/Style/Style.java" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/src/main/java/Style/Style.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/CastleS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/ForgeS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/ForgeS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/InnS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/InnS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/GameMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Style/Style.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Style/Style.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/CastleS$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/CastleS$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/CastleS$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/CastleS$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/CastleS$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/CastleS$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/CastleS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/ForgeS.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/ForgeS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/InnS$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/InnS$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/InnS$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/InnS$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/InnS$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/InnS$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/InnS.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageElement/InnS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/Menu$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/Menu$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/Menu$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/Menu$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Menu/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Village/VillageS.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/PARA-Swing/target/" />
     <ignored path="$PROJECT_DIR$/PARA-core/target/" />
@@ -54,12 +38,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="998" />
+          <entry key="java" value="1373" />
+          <entry key="txt" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="998" />
+          <entry key="JAVA" value="1373" />
+          <entry key="PLAIN_TEXT" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -100,8 +86,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="113" column="66" selection-start-line="113" selection-start-column="66" selection-end-line="113" selection-end-column="66" />
+            <state relative-caret-position="465">
+              <caret line="194" column="44" lean-forward="true" selection-start-line="194" selection-start-column="44" selection-end-line="194" selection-end-column="44" />
+              <folding>
+                <element signature="e#3195#3368#0" expanded="true" />
+                <element signature="e#3367#3368#0" expanded="true" />
+                <element signature="e#3452#3621#0" expanded="true" />
+                <element signature="e#3620#3621#0" expanded="true" />
+                <element signature="e#3705#3878#0" expanded="true" />
+                <element signature="e#3877#3878#0" expanded="true" />
+                <element signature="e#10202#10406#0" expanded="true" />
+                <element signature="e#10405#10406#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/ForgeS.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
-              <caret line="69" column="63" lean-forward="true" selection-start-line="69" selection-start-column="63" selection-end-line="69" selection-end-column="63" />
+              <caret line="69" column="65" lean-forward="true" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -164,7 +160,7 @@
         <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Menu/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="309">
-              <caret line="127" column="35" selection-start-line="127" selection-start-column="35" selection-end-line="127" selection-end-column="35" />
+              <caret line="126" column="35" selection-start-line="126" selection-start-column="35" selection-end-line="126" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -177,6 +173,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>selected</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -290,7 +291,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543843213409" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543844390951" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -340,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543800819307</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="CastleS poprawiony widok!!!">
+      <created>1543843295091</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1543843295091</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -385,7 +393,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="koniec z mapa tylko wywolanie walki dopisac" />
-    <option name="LAST_COMMIT_MESSAGE" value="koniec z mapa tylko wywolanie walki dopisac" />
+    <MESSAGE value="CastleS poprawiony widok!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="CastleS poprawiony widok!!!" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -505,17 +514,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/ForgeS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="69" column="63" lean-forward="true" selection-start-line="69" selection-start-column="63" selection-end-line="69" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Menu/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
-          <caret line="127" column="35" selection-start-line="127" selection-start-column="35" selection-end-line="127" selection-end-column="35" />
+          <caret line="126" column="35" selection-start-line="126" selection-start-column="35" selection-end-line="126" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -526,10 +528,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/ForgeS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="69" column="65" lean-forward="true" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="113" column="66" selection-start-line="113" selection-start-column="66" selection-end-line="113" selection-end-column="66" />
+        <state relative-caret-position="465">
+          <caret line="194" column="44" lean-forward="true" selection-start-line="194" selection-start-column="44" selection-end-line="194" selection-end-column="44" />
+          <folding>
+            <element signature="e#3195#3368#0" expanded="true" />
+            <element signature="e#3367#3368#0" expanded="true" />
+            <element signature="e#3452#3621#0" expanded="true" />
+            <element signature="e#3620#3621#0" expanded="true" />
+            <element signature="e#3705#3878#0" expanded="true" />
+            <element signature="e#3877#3878#0" expanded="true" />
+            <element signature="e#10202#10406#0" expanded="true" />
+            <element signature="e#10405#10406#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

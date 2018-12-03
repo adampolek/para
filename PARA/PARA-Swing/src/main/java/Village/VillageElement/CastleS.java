@@ -45,6 +45,8 @@ public class CastleS extends JPanel implements  ActionListener{
     private int temp;
     CharactersList charactersList;
     private JPanel castlePanel;
+    private JLabel mapLabel = new JLabel("Map selected: None");
+    private JButton startMission = new JButton("Start mission");
 
     public CastleS(final Game game){
         this.game = game;
@@ -77,6 +79,7 @@ public class CastleS extends JPanel implements  ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedMap=0;
+                mapLabel.setText("Map selected: Small map");
             }
         });
 
@@ -84,12 +87,14 @@ public class CastleS extends JPanel implements  ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedMap=1;
+                mapLabel.setText("Map selected: Medium map");
             }
         });
         bigMap.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectedMap=2;
+                mapLabel.setText("Map selected: Big map");
             }
         });
 
@@ -181,6 +186,19 @@ public class CastleS extends JPanel implements  ActionListener{
             }
         });
 
+        startMission.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (selected.size() == 0) {
+                    heroMessage.setText("Select at least one hero!");
+                    heroMessage.setVisible(true);
+                    heroMessage.setForeground(Color.red);
+                } else {
+                    //TODO rozpoczecie misji
+                }
+            }
+        });
+
     }
 
     public void addKeyListerner() {
@@ -213,6 +231,7 @@ public class CastleS extends JPanel implements  ActionListener{
         addButton(mediumMap, castlePanel.getWidth() / 20, castlePanel.getHeight() / 4 + castlePanel.getHeight() / 16 * 2, castlePanel.getWidth() / 6, castlePanel.getHeight() / 16);
         addButton(bigMap, castlePanel.getWidth() / 20, castlePanel.getHeight() / 4 + castlePanel.getHeight() / 16 * 4, castlePanel.getWidth() / 6, castlePanel.getHeight() / 16);
         addButton(back, (int) (castlePanel.getWidth() / (1.4)), (int) (castlePanel.getHeight() / 1.1), castlePanel.getWidth() / 4, castlePanel.getHeight() / 18);
+        addButton(startMission, (int) (castlePanel.getWidth() / (1.4)), (int) (castlePanel.getHeight() / 1.2), castlePanel.getWidth() / 4, castlePanel.getHeight() / 18);
         addList(userCharacters, castlePanel.getWidth() / 4, castlePanel.getHeight() / 10, castlePanel.getWidth() / 4, (int) (castlePanel.getHeight() / 1.5));
         addLabel(yourCharacters, castlePanel.getWidth() / 4, castlePanel.getHeight() / 50, castlePanel.getWidth() / 4, castlePanel.getHeight() / 20);
         Style.styleTitle(yourCharacters, castlePanel.getHeight() / 30);
@@ -221,6 +240,10 @@ public class CastleS extends JPanel implements  ActionListener{
         Style.styleTitle(selectedHeroes, castlePanel.getHeight() / 30);
         addLabel(heroMessage, castlePanel.getWidth() / 20, (int) (castlePanel.getHeight() / 1.1), (int) (castlePanel.getWidth() / 1.5), castlePanel.getHeight() / 18);
         Style.styleTitle(heroMessage, castlePanel.getHeight() / 20);
+        heroMessage.setHorizontalAlignment(SwingConstants.LEFT);
+        addLabel(mapLabel, castlePanel.getWidth() / 20, (int) (castlePanel.getHeight() / 1.2), (int) (castlePanel.getWidth() / 1.5), castlePanel.getHeight() / 18);
+        Style.styleTitle(mapLabel, castlePanel.getHeight() / 20);
+        mapLabel.setHorizontalAlignment(SwingConstants.LEFT);
         heroMessage.setVisible(false);
         yourCharacters.setForeground(Color.RED);
         selectedHeroes.setForeground(Color.RED);
