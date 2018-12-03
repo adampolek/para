@@ -24,6 +24,7 @@ public class VillageS extends JPanel implements ActionListener {
     private int screenWidth;
     private int screenHeight;
     CharactersList charactersList;
+    JPanel usersStatsS = new JPanel();
 
     public VillageS(final Game game) {
         this.game = game;
@@ -120,6 +121,7 @@ public class VillageS extends JPanel implements ActionListener {
         addButton(backToMenu,((int)(screenWidth/(double)2.6)),(int)(screenHeight/(1.2)),screenWidth/16,screenHeight/6);
         Style.styleBackground(backToMenu, "style/Back.png", "style/BackRollOver.png", screenWidth/16, screenHeight/6);
         charactersList.showList(this);
+        add(new UsersStatsS(game));
     }
 
     public void addKeyListerner() {

@@ -4,6 +4,7 @@ import Characters.Character;
 import CharactersList.CharactersList;
 import Gameplay.Game;
 import Style.Style;
+import Village.UsersStatsS;
 import Village.VillageS;
 
 import javax.swing.*;
@@ -54,6 +55,7 @@ public class InnS extends JPanel{
         add(innPanel);
         addKeyListerner();
         createInn();
+        add(new UsersStatsS(game));
 //        heroesList.setBounds(150,150,400,800);
     }
 
