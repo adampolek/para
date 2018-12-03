@@ -1,8 +1,8 @@
 package Menu.ElementsMenu;
 
 import Gameplay.Game;
-import Menu.Menu;
 import Menu.GameMenu;
+import Menu.Menu;
 import Style.Style;
 import root.Music;
 
@@ -107,7 +107,6 @@ public class Options extends JPanel {
     }
 
     public void addVolume(){
-        add(volume);
         volume.setBounds(screenWidth/8 + 60, (screenHeight - screenHeight / 4) / 10 + screenHeight / 4, screenWidth/2, screenHeight / 18);
         volume.addChangeListener(new ChangeListener() {
             @Override
@@ -115,7 +114,8 @@ public class Options extends JPanel {
                 Music.setLevel(volume.getValue() * 0.1);
             }
         });
-        Style.styleSilders(volume, screenHeight/33);
+        Style.styleSilders(volume);
+        add(volume);
     }
 
     public void addBack() {

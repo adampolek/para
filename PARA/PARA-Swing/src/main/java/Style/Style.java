@@ -38,14 +38,11 @@ public class Style {
         text.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
     }
 
-    public static void styleSilders(JSlider slider, int sizeFont){
+    public static void styleSilders(JSlider slider) {
         slider.setBackground(Color.BLACK);
         slider.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
         slider.setMajorTickSpacing(10);
         slider.setMinorTickSpacing(1);
-        Font font = new Font("Snap ITC", Font.BOLD, sizeFont);
-        slider.setFont(font);
-        slider.setForeground(Color.RED);
 
     }
 

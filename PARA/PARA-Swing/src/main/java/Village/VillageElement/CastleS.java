@@ -3,6 +3,7 @@ package Village.VillageElement;
 import Characters.Character;
 import CharactersList.CharactersList;
 import Gameplay.Game;
+import Mission.MapS;
 import Style.Style;
 import Village.VillageS;
 
@@ -194,7 +195,12 @@ public class CastleS extends JPanel implements  ActionListener{
                     heroMessage.setVisible(true);
                     heroMessage.setForeground(Color.red);
                 } else {
-                    //TODO rozpoczecie misji
+                    game.loadMaps();
+                    game.goMission(game.getCastle().selectMap(selectedMap));
+                    getParent().add(new MapS(game));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(CastleS.this);
                 }
             }
         });

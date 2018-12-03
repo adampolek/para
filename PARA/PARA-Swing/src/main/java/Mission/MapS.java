@@ -112,7 +112,10 @@ public class MapS extends JPanel {
                     getParent().revalidate();
                     getParent().remove(MapS.this);
                 } else if (game.getHeroControll().getH().getVarible(game.getHeroControll().getH().getX(), game.getHeroControll().getH().getY()) == 2) {
-                    System.out.println("niebieski");
+                    getParent().add(new FightS(game));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(MapS.this);
                 }
             }
 
