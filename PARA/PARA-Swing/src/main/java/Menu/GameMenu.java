@@ -2,7 +2,6 @@ package Menu;
 
 import Gameplay.Game;
 import Menu.ElementsMenu.GameSave;
-import Menu.ElementsMenu.Load;
 import Menu.ElementsMenu.Options;
 import Style.Style;
 import Village.VillageS;
@@ -102,7 +101,13 @@ public class GameMenu extends JPanel {
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                getParent().add(new Menu());
+                String nameClass = String.valueOf(backPanel.getClass());
+                if (nameClass.equals("class Village.VillageS")) {
+                    getParent().add(new Menu());
+                } else {
+                    game.backFromMission();
+                    getParent().add(new VillageS(game));
+                }
                 getParent().repaint();
                 getParent().revalidate();
                 getParent().remove(GameMenu.this);

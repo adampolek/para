@@ -1,9 +1,9 @@
 package Menu;
 
-import CharactersList.CharactersList;
 import Gameplay.Game;
 import Menu.ElementsMenu.Load;
 import Menu.ElementsMenu.Options;
+import Mission.MapS;
 import Style.Style;
 import Village.VillageS;
 
@@ -124,10 +124,13 @@ public class Menu extends JPanel {
                     name.setText("Stranger");
                 }
                 Game game = new Game();
-                game.createFirst();
-                VillageS villageS = new VillageS(game);
                 game.getUser().setName(name.getText());
-                getParent().add(villageS);
+                game.createFirst();
+                game.loadMaps();
+                game.getCastle().addCharcters(game.getUser().getUsersCharacters().get(1));
+                game.goMission(game.getCastle().selectMap(0));
+                VillageS villageS = new VillageS(game);
+                getParent().add(new MapS(game));
                 getParent().repaint();
                 getParent().revalidate();
                 getParent().remove(Menu.this);
