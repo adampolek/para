@@ -4,6 +4,7 @@ import CharactersList.CharactersList;
 import Gameplay.Game;
 import Menu.GameMenu;
 import Style.Style;
+import Village.VillageElement.CastleS;
 import Village.VillageElement.ForgeS;
 import Village.VillageElement.InnS;
 

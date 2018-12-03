@@ -34,6 +34,7 @@ public class InnS extends JPanel{
     private JLabel characterSpeed = new JLabel();
     private JLabel characterDodge = new JLabel();
     private JLabel characterCritChance = new JLabel();
+    private JLabel innName = new JLabel();
     CharactersList charactersList;
     JLabel imageLabel;
 
@@ -57,10 +58,15 @@ public class InnS extends JPanel{
     }
 
     public void createInn(){
+        imageLabel = new JLabel();
         innPanel.add(innHeroesList);
         innHeroesList.setBounds(innPanel.getWidth()/10 , innPanel.getHeight()/10 , innPanel.getWidth()/3,(int)(innPanel.getHeight()/1.5));
         innHeroesList.setForeground(Color.ORANGE);
         innHeroesList.setBackground(Color.DARK_GRAY);
+        innPanel.add(innName);
+        innName.setText("Inn");
+        Style.styleTitle(innName, innPanel.getHeight() / 18);
+        innName.setBounds(innPanel.getWidth() / 10, innPanel.getHeight() / 40, innPanel.getWidth() / 4, innPanel.getHeight() / 15);
         System.out.println("You clicked Inn");
         DLM.removeAllElements();
 
@@ -101,6 +107,8 @@ public class InnS extends JPanel{
                 characterCritChance.setVisible(false);
                 characterSpeed.setVisible(false);
                 characterAttack.setVisible(false);
+                imageLabel.setIcon(null);
+                innPanel.repaint();
             }
         });
         innHeroesList.addListSelectionListener(new ListSelectionListener() {
@@ -120,7 +128,7 @@ public class InnS extends JPanel{
                     innPanel.add(characterSpeed);
                     innPanel.add(characterDodge);
                     innPanel.add(characterCritChance);
-                    imageLabel = new JLabel(new ImageIcon(getImageName(game.getInn().getCharacters().get(index).getType())));
+                    imageLabel.setIcon(new ImageIcon(getImageName(game.getInn().getCharacters().get(index).getType())));
                     imageLabel.setBounds(innPanel.getWidth()/2,innPanel.getHeight()/10, innPanel.getWidth()/10, innPanel.getHeight()/9);
                     innPanel.add(imageLabel);
                     characterClass.setBounds(innPanel.getWidth()/2, innPanel.getHeight()/4, innPanel.getWidth()/2, innPanel.getHeight()/20);
@@ -152,6 +160,8 @@ public class InnS extends JPanel{
                     characterClass.setVisible(true);
                     characterAttack.setVisible(true);
                     addToTeam.setVisible(true);
+                    innPanel.setVisible(true);
+                    innPanel.repaint();
                     Character character = game.getInn().getCharacters().get(index);
                     System.out.println(character.getName() + "" + character.getHp());
                     String nameClass = String.valueOf(character.getClass());
@@ -194,15 +204,15 @@ public class InnS extends JPanel{
 
     public String getImageName(String klasa){
         if (klasa.equals("Dwarf")) {
-            return "dwarf.png";
+            return "style/dwarf.png";
         } else if (klasa.equals("Archer")) {
-            return "archer.png";
+            return "style/archer.png";
         } else if (klasa.equals("Warrior")) {
-            return "warrior.png";
+            return "style/warrior.png";
         } else if (klasa.equals("Wizard")) {
-            return "wizard.png";
+            return "style/wizard.png";
         }else if(klasa.equals("Character")){
-            return "character.png";
+            return "style/character.png";
         } else {
             return "oh, crap!";
         }

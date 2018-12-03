@@ -1,9 +1,10 @@
-package Village;
+package Village.VillageElement;
 
 import Characters.Character;
 import CharactersList.CharactersList;
 import Gameplay.Game;
 import Style.Style;
+import Village.VillageS;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -43,21 +44,25 @@ public class CastleS extends JPanel implements  ActionListener{
     private List<Integer> selected =  new ArrayList<>();
     private int temp;
     CharactersList charactersList;
+    private JPanel castlePanel;
 
     public CastleS(final Game game){
-        this.game=game;
-        temp=0;
-        charactersList = new CharactersList(game, this);
+        this.game = game;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
-        setBackground(Color.BLACK);
+        setBounds(0, 0, (int) (screenWidth), screenHeight);
         setLayout(null);
-        setBounds(0, 0, screenWidth, screenHeight);
+        setBackground(Color.BLACK);
+        castlePanel = new JPanel();
+        castlePanel.setLayout(null);
+        castlePanel.setBackground(Color.BLACK);
+        castlePanel.setBounds((this.getWidth() - (int) (this.getWidth() / 1.2)) / 2, (this.getHeight() - (int) (this.getHeight() / 1.2)) / 2, (int) (this.getWidth() / 1.4), (int) (this.getHeight() / 1.2));
+        castlePanel.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
+        add(castlePanel);
+        addKeyListerner();
         createCastle();
         loadUserCharacters();
-        addKeyListerner();
-        charactersList.showList(this);
 
         back.addActionListener(new ActionListener() {
             @Override
@@ -94,24 +99,31 @@ public class CastleS extends JPanel implements  ActionListener{
                 System.out.println("klik na elem listy");
                 int index;
                 index = userCharacters.getSelectedIndex();
-                addButton(add,500,330,250,50);
+                addButton(add, (int) (castlePanel.getWidth() / 1.9), (int) (castlePanel.getHeight() / 1.5), castlePanel.getWidth() / 6, castlePanel.getHeight() / 16);
                 add.setVisible(false);
 
                 if(index!=-1) {
-                    addLabel(characterClass, 500, 100, 150, 15);
-                    addLabel(characterHealth, 500, 130, 350, 15);
-                    addLabel(characterAttack, 500, 160, 350, 15);
-                    addLabel(characterDefence, 500, 190, 350, 15);
-                    addLabel(characterSpeed, 500, 220, 350, 15);
-                    addLabel(characterDodge, 500, 250, 350, 15);
-                    addLabel(characterCritChance, 500, 280, 350, 15);
-                    characterClass.setForeground(Color.blue);
-                    characterHealth.setForeground(Color.blue);
-                    characterAttack.setForeground(Color.blue);
-                    characterDefence.setForeground(Color.blue);
-                    characterDodge.setForeground(Color.blue);
-                    characterCritChance.setForeground(Color.blue);
-                    characterSpeed.setForeground(Color.blue);
+                    addLabel(characterClass, castlePanel.getWidth() / 2 + castlePanel.getHeight() / 60, castlePanel.getHeight() / 8, castlePanel.getWidth() / 5, castlePanel.getHeight() / 30);
+                    addLabel(characterHealth, castlePanel.getWidth() / 2 + castlePanel.getHeight() / 60, castlePanel.getHeight() / 8 + castlePanel.getHeight() / 30 * 2, castlePanel.getWidth() / 5, castlePanel.getHeight() / 30);
+                    addLabel(characterAttack, castlePanel.getWidth() / 2 + castlePanel.getHeight() / 60, castlePanel.getHeight() / 8 + castlePanel.getHeight() / 30 * 4, castlePanel.getWidth() / 5, castlePanel.getHeight() / 30);
+                    addLabel(characterDefence, castlePanel.getWidth() / 2 + castlePanel.getHeight() / 60, castlePanel.getHeight() / 8 + castlePanel.getHeight() / 30 * 6, castlePanel.getWidth() / 5, castlePanel.getHeight() / 30);
+                    addLabel(characterSpeed, castlePanel.getWidth() / 2 + castlePanel.getHeight() / 60, castlePanel.getHeight() / 8 + castlePanel.getHeight() / 30 * 8, castlePanel.getWidth() / 5, castlePanel.getHeight() / 30);
+                    addLabel(characterDodge, castlePanel.getWidth() / 2 + castlePanel.getHeight() / 60, castlePanel.getHeight() / 8 + castlePanel.getHeight() / 30 * 10, castlePanel.getWidth() / 5, castlePanel.getHeight() / 30);
+                    addLabel(characterCritChance, castlePanel.getWidth() / 2 + castlePanel.getHeight() / 60, castlePanel.getHeight() / 8 + castlePanel.getHeight() / 30 * 12, castlePanel.getWidth() / 5, castlePanel.getHeight() / 30);
+                    Style.styleTitle(characterClass, castlePanel.getHeight() / 25);
+                    characterClass.setForeground(new Color(128, 0, 0));
+                    Style.styleTitle(characterHealth, castlePanel.getHeight() / 40);
+                    characterHealth.setHorizontalAlignment(SwingConstants.LEFT);
+                    Style.styleTitle(characterAttack, castlePanel.getHeight() / 40);
+                    characterAttack.setHorizontalAlignment(SwingConstants.LEFT);
+                    Style.styleTitle(characterDefence, castlePanel.getHeight() / 40);
+                    characterDefence.setHorizontalAlignment(SwingConstants.LEFT);
+                    Style.styleTitle(characterSpeed, castlePanel.getHeight() / 40);
+                    characterSpeed.setHorizontalAlignment(SwingConstants.LEFT);
+                    Style.styleTitle(characterDodge, castlePanel.getHeight() / 40);
+                    characterDodge.setHorizontalAlignment(SwingConstants.LEFT);
+                    Style.styleTitle(characterCritChance, castlePanel.getHeight() / 40);
+                    characterCritChance.setHorizontalAlignment(SwingConstants.LEFT);
                     characterHealth.setVisible(true);
                     characterSpeed.setVisible(true);
                     characterDefence.setVisible(true);
@@ -124,12 +136,12 @@ public class CastleS extends JPanel implements  ActionListener{
                     System.out.println(character.getName() + "" + character.getHp());
                     String nameClass = String.valueOf(character.getClass());
                     characterClass.setText(nameClass.substring(17, nameClass.length()));
-                    characterAttack.setText("Attack: " + character.getAttack() + "( Next level: " + character.getAttack_level() * 10 + " gold)");
-                    characterHealth.setText("Health: " + character.getHp() + "( Next level: " + character.getHp_level() * 10 + " gold)");
-                    characterDefence.setText("Defence: " + character.getDefence() + "( Next level: " + character.getDefence_level() * 10 + " gold)");
-                    characterSpeed.setText("Speed: " + character.getSpeed() + "( Next level: " + character.getSpeed_level() * 10 + " gold)");
-                    characterDodge.setText("Dodge: " + character.getDodge() + "( Next level: " + character.getDodge_level() * 10 + " gold)");
-                    characterCritChance.setText("Crit chance: " + character.getCrit_chance() + "( Next level: " + character.getCrit_chance_level() * 10 + " gold)");
+                    characterAttack.setText("Attack: " + character.getAttack());
+                    characterHealth.setText("Health: " + character.getHp());
+                    characterDefence.setText("Defence: " + character.getDefence());
+                    characterSpeed.setText("Speed: " + character.getSpeed());
+                    characterDodge.setText("Dodge: " + character.getDodge());
+                    characterCritChance.setText("Crit chance: " + character.getCrit_chance());
                     add.setVisible(true);
                 }
             }
@@ -197,34 +209,39 @@ public class CastleS extends JPanel implements  ActionListener{
     }
 
     public void createCastle(){
-        addButton(smallMap,30,30,200,50);
-        addButton(mediumMap,30,100,200,50);
-        addButton(bigMap,30,170,200,50);
-        addButton(back,1000,700,200,50);
-        addList(userCharacters,280,80,200,500);
-        addLabel(yourCharacters,290,30,150,20);
-        addList(selectedCharacters,750,80,200,200);
-        addLabel(selectedHeroes,760,30,150,20);
-        addLabel(heroMessage,750,300,150,15);
+        addButton(smallMap, castlePanel.getWidth() / 20, castlePanel.getHeight() / 4, castlePanel.getWidth() / 6, castlePanel.getHeight() / 16);
+        addButton(mediumMap, castlePanel.getWidth() / 20, castlePanel.getHeight() / 4 + castlePanel.getHeight() / 16 * 2, castlePanel.getWidth() / 6, castlePanel.getHeight() / 16);
+        addButton(bigMap, castlePanel.getWidth() / 20, castlePanel.getHeight() / 4 + castlePanel.getHeight() / 16 * 4, castlePanel.getWidth() / 6, castlePanel.getHeight() / 16);
+        addButton(back, (int) (castlePanel.getWidth() / (1.4)), (int) (castlePanel.getHeight() / 1.1), castlePanel.getWidth() / 4, castlePanel.getHeight() / 18);
+        addList(userCharacters, castlePanel.getWidth() / 4, castlePanel.getHeight() / 10, castlePanel.getWidth() / 4, (int) (castlePanel.getHeight() / 1.5));
+        addLabel(yourCharacters, castlePanel.getWidth() / 4, castlePanel.getHeight() / 50, castlePanel.getWidth() / 4, castlePanel.getHeight() / 20);
+        Style.styleTitle(yourCharacters, castlePanel.getHeight() / 30);
+        addList(selectedCharacters, (int) (castlePanel.getWidth() / 1.4), castlePanel.getHeight() / 10, castlePanel.getWidth() / 4, (int) (castlePanel.getHeight() / 1.5));
+        addLabel(selectedHeroes, (int) (castlePanel.getWidth() / 1.4), castlePanel.getHeight() / 50, castlePanel.getWidth() / 4, castlePanel.getHeight() / 20);
+        Style.styleTitle(selectedHeroes, castlePanel.getHeight() / 30);
+        addLabel(heroMessage, castlePanel.getWidth() / 20, (int) (castlePanel.getHeight() / 1.1), (int) (castlePanel.getWidth() / 1.5), castlePanel.getHeight() / 18);
+        Style.styleTitle(heroMessage, castlePanel.getHeight() / 20);
         heroMessage.setVisible(false);
         yourCharacters.setForeground(Color.RED);
         selectedHeroes.setForeground(Color.RED);
+        charactersList = new CharactersList(game, this);
+        charactersList.showList(this);
     }
 
     public void addButton(JButton button,int x,int y,int width,int height){
-        add(button);
+        castlePanel.add(button);
         Style.styleButtonSimple(button, width, height, screenHeight / 50);
         button.setBounds(x,y,width,height);
     }
     public void addList(JList jlist,int x,int y,int width,int height){
-        add(jlist);
+        castlePanel.add(jlist);
         jlist.setBounds(x,y,width,height);
         jlist.setForeground(Color.ORANGE);
         jlist.setBackground(Color.DARK_GRAY);
         //jlist.addActionListener( this);
     }
     public void addLabel(JLabel jLabel,int x,int y,int width,int height){
-        add(jLabel);
+        castlePanel.add(jLabel);
         jLabel.setBounds(x,y,width,height);
         //jlist.addActionListener( this);
     }

@@ -39,6 +39,7 @@ public class ForgeS extends JPanel {
     private int screenHeight;
     CharactersList charactersList;
     private JPanel forgePanel;
+    private JLabel forgeName = new JLabel();
 
     public ForgeS(Game game){
         this.game = game;
@@ -64,6 +65,10 @@ public class ForgeS extends JPanel {
         forgeHeroesList.setForeground(Color.ORANGE);
         forgeHeroesList.setBackground(Color.DARK_GRAY);
         forgePanel.add(forgeHeroesList);
+        forgePanel.add(forgeName);
+        forgeName.setText("Forge");
+        Style.styleTitle(forgeName, forgePanel.getHeight() / 18);
+        forgeName.setBounds(forgePanel.getWidth() / 10, forgePanel.getHeight() / 40, forgePanel.getWidth() / 4, forgePanel.getHeight() / 15);
         forgeHeroesList.setBounds(forgePanel.getWidth()/10 , forgePanel.getHeight()/10 , forgePanel.getWidth()/3,(int)(forgePanel.getHeight()/1.5));
         DLM.removeAllElements();
         for (int i=0;i<game.getUser().getUsersCharacters().size();i++) {

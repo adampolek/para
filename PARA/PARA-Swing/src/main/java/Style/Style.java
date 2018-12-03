@@ -49,18 +49,6 @@ public class Style {
 
     }
 
-    public static void styleVillage(JPanel panel){
-        panel.setBackground(Color.BLACK);
-        ImageIcon icon = new ImageIcon("style/Village.png");
-        Image image = icon.getImage();
-        Image newImage = image.getScaledInstance((int)(panel.getWidth()/(double)1.2), panel.getHeight(), java.awt.Image.SCALE_SMOOTH);
-        ImageIcon background = new ImageIcon(newImage);
-        JLabel imageBackground = new JLabel(background);
-        imageBackground.setBounds(0, 0, (int)(panel.getWidth()/(double)1.2), panel.getHeight());
-        panel.add(imageBackground, 0);
-        panel.setLayout(null);
-    }
-
     public static void styleBackground(JButton button, String path,String pathRollOver, int widthImage, int heightImage) {
         ImageIcon icon = new ImageIcon(path);
         Image image = icon.getImage();
