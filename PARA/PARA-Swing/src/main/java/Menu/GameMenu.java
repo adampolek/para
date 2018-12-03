@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class GameMenu extends JPanel {
 
@@ -32,6 +34,7 @@ public class GameMenu extends JPanel {
         setBackground(Color.BLACK);
         setLayout(null);
         setBounds(0, 0, screenWidth, screenHeight);
+        addKeyListerner();
         createMenu();
     }
 
@@ -92,6 +95,31 @@ public class GameMenu extends JPanel {
                 getParent().remove(GameMenu.this);
             }
         });
+    }
+
+    public void addKeyListerner() {
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (KeyEvent.getKeyText(e.getKeyCode()).equals("Escape")) {
+                    getParent().add(backPanel);
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(GameMenu.this);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+        setFocusable(true);
     }
 
     public void addExit() {

@@ -12,6 +12,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class ForgeS extends JPanel {
 
@@ -52,6 +54,7 @@ public class ForgeS extends JPanel {
         forgePanel.setBounds((this.getWidth()-(int)(this.getWidth()/1.2))/2, (this.getHeight()-(int)(this.getHeight()/1.2))/2, (int)(this.getWidth()/1.4), (int)(this.getHeight()/1.2));
         forgePanel.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
         add(forgePanel);
+        addKeyListerner();
         createForge();
     }
 
@@ -289,6 +292,31 @@ public class ForgeS extends JPanel {
                 }
             }
         });
+    }
+
+    public void addKeyListerner() {
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (KeyEvent.getKeyText(e.getKeyCode()).equals("Escape")) {
+                    getParent().add(new VillageS(game));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(ForgeS.this);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+        setFocusable(true);
     }
 
     public void clearScreen(){

@@ -1,15 +1,18 @@
 package Village;
 
 import CharactersList.CharactersList;
-import Menu.GameMenu;
 import Gameplay.Game;
+import Menu.GameMenu;
 import Style.Style;
 import Village.VillageElement.ForgeS;
 import Village.VillageElement.InnS;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class VillageS extends JPanel implements ActionListener {
     private JButton castleButton = new JButton("Castle");
@@ -31,9 +34,9 @@ public class VillageS extends JPanel implements ActionListener {
         setBackground(Color.BLACK);
         setLayout(null);
         createVillage();
+        addKeyListerner();
         innButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                clearScreen();
                 getParent().add(new InnS(game));
                 getParent().repaint();
                 getParent().revalidate();
@@ -116,6 +119,46 @@ public class VillageS extends JPanel implements ActionListener {
         addButton(backToMenu,((int)(screenWidth/(double)2.6)),(int)(screenHeight/(1.2)),screenWidth/16,screenHeight/6);
         Style.styleBackground(backToMenu, "style/Back.png", "style/BackRollOver.png", screenWidth/16, screenHeight/6);
         charactersList.showList(this);
+    }
+
+    public void addKeyListerner() {
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (KeyEvent.getKeyText(e.getKeyCode()).equals("Escape")) {
+                    getParent().add(new GameMenu(game, VillageS.this));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(VillageS.this);
+                } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("C")) {
+                    getParent().add(new CastleS(game));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(VillageS.this);
+                } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("I")) {
+                    getParent().add(new InnS(game));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(VillageS.this);
+                } else if (KeyEvent.getKeyText(e.getKeyCode()).equals("F")) {
+                    getParent().add(new ForgeS(game));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(VillageS.this);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+        setFocusable(true);
     }
 
     @Override

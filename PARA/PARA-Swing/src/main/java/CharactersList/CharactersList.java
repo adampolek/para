@@ -2,13 +2,13 @@ package CharactersList;
 
 import Characters.Character;
 import Gameplay.Game;
+import Style.Style;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.util.ArrayList;
-import Style.Style;
 
 public class CharactersList{
 
@@ -83,15 +83,15 @@ public class CharactersList{
 
     public String getImageName(String klasa){
         if (klasa.equals("Dwarf")) {
-            return "dwarf.png";
+            return "style/dwarf.png";
         } else if (klasa.equals("Archer")) {
-            return "archer.png";
+            return "style/archer.png";
         } else if (klasa.equals("Warrior")) {
-            return "warrior.png";
+            return "style/warrior.png";
         } else if (klasa.equals("Wizard")) {
-            return "wizard.png";
+            return "style/wizard.png";
         }else if(klasa.equals("Character")){
-            return "character.png";
+            return "style/character.png";
         } else {
             return "oh, crap!";
         }

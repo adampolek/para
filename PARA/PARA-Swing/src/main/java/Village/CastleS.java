@@ -4,7 +4,6 @@ import Characters.Character;
 import CharactersList.CharactersList;
 import Gameplay.Game;
 import Style.Style;
-import javafx.scene.control.RadioButton;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -12,6 +11,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +56,7 @@ public class CastleS extends JPanel implements  ActionListener{
         setBounds(0, 0, screenWidth, screenHeight);
         createCastle();
         loadUserCharacters();
+        addKeyListerner();
         charactersList.showList(this);
 
         back.addActionListener(new ActionListener() {
@@ -167,6 +169,31 @@ public class CastleS extends JPanel implements  ActionListener{
             }
         });
 
+    }
+
+    public void addKeyListerner() {
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (KeyEvent.getKeyText(e.getKeyCode()).equals("Escape")) {
+                    getParent().add(new VillageS(game));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(CastleS.this);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+        setFocusable(true);
     }
 
     public void createCastle(){

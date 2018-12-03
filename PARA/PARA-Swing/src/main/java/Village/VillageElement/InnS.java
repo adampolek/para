@@ -12,6 +12,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class InnS extends JPanel{
 
@@ -49,6 +51,7 @@ public class InnS extends JPanel{
         innPanel.setBounds((this.getWidth()-(int)(this.getWidth()/1.2))/2, (this.getHeight()-(int)(this.getHeight()/1.2))/2, (int)(this.getWidth()/1.4), (int)(this.getHeight()/1.2));
         innPanel.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
         add(innPanel);
+        addKeyListerner();
         createInn();
 //        heroesList.setBounds(150,150,400,800);
     }
@@ -162,6 +165,31 @@ public class InnS extends JPanel{
                 }}
         });
 
+    }
+
+    public void addKeyListerner() {
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (KeyEvent.getKeyText(e.getKeyCode()).equals("Escape")) {
+                    getParent().add(new VillageS(game));
+                    getParent().repaint();
+                    getParent().revalidate();
+                    getParent().remove(InnS.this);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+        setFocusable(true);
     }
 
     public String getImageName(String klasa){
