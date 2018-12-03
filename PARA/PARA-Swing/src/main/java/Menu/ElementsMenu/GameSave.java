@@ -1,8 +1,9 @@
 package Menu.ElementsMenu;
 
-import Style.Style;
 import Gameplay.Game;
 import Menu.GameMenu;
+import Style.Style;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +18,7 @@ public class GameSave extends JPanel {
     private JButton save3 = new JButton("Save 3");
     private JButton save4 = new JButton("Save 4");
     private JButton save5 = new JButton("Save 5");
-    private JLabel isSave = new JLabel("Saved game.");
+    private JLabel isSave = new JLabel("Game saved!");
     private JButton back = new JButton("Back");
     private Game game;
     private JPanel backPanel;
