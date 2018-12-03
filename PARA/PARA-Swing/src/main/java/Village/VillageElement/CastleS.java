@@ -24,6 +24,7 @@ public class CastleS extends JPanel implements  ActionListener{
     private JButton bigMap = new JButton("Big map");
     private JButton back = new JButton("Back to village");
     private JButton add = new JButton("Add");
+    private JButton reset = new JButton("Reset list");
     private JLabel yourCharacters  = new JLabel("Your characters");
     private JLabel selectedHeroes  = new JLabel("Selected characters");
     private JLabel heroMessage  = new JLabel("");
@@ -105,7 +106,7 @@ public class CastleS extends JPanel implements  ActionListener{
                 System.out.println("klik na elem listy");
                 int index;
                 index = userCharacters.getSelectedIndex();
-                addButton(add, (int) (castlePanel.getWidth() / 1.9), (int) (castlePanel.getHeight() / 1.5), castlePanel.getWidth() / 6, castlePanel.getHeight() / 16);
+                addButton(add, (int) (castlePanel.getWidth() / 1.9), (int) (castlePanel.getHeight() / 1.7), castlePanel.getWidth() / 6, castlePanel.getHeight() / 16);
                 add.setVisible(false);
 
                 if(index!=-1) {
@@ -187,6 +188,17 @@ public class CastleS extends JPanel implements  ActionListener{
             }
         });
 
+        reset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DLM2.removeAllElements();
+                selectedCharacters.setModel(DLM2);
+                game.getCastle().getCharacters().clear();
+                temp=0;
+                selected.clear();
+            }
+        });
+
         startMission.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -255,6 +267,7 @@ public class CastleS extends JPanel implements  ActionListener{
         selectedHeroes.setForeground(Color.RED);
         charactersList = new CharactersList(game, this);
         charactersList.showList(this);
+        addButton(reset,(int) (castlePanel.getWidth() / 1.9), (int) (castlePanel.getHeight() / 1.5 ), castlePanel.getWidth() / 6, castlePanel.getHeight() / 16);
     }
 
     public void addButton(JButton button,int x,int y,int width,int height){
