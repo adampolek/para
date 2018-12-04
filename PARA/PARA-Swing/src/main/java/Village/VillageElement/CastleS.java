@@ -253,9 +253,11 @@ public class CastleS extends JPanel implements  ActionListener{
         addButton(back, (int) (castlePanel.getWidth() / (1.4)), (int) (castlePanel.getHeight() / 1.1), castlePanel.getWidth() / 4, castlePanel.getHeight() / 18);
         addButton(startMission, (int) (castlePanel.getWidth() / (1.4)), (int) (castlePanel.getHeight() / 1.2), castlePanel.getWidth() / 4, castlePanel.getHeight() / 18);
         addList(userCharacters, castlePanel.getWidth() / 4, castlePanel.getHeight() / 10, castlePanel.getWidth() / 4, (int) (castlePanel.getHeight() / 1.5));
+        Style.styleListView(userCharacters,this.getHeight() / 42);
         addLabel(yourCharacters, castlePanel.getWidth() / 4, castlePanel.getHeight() / 50, castlePanel.getWidth() / 4, castlePanel.getHeight() / 20);
         Style.styleTitle(yourCharacters, castlePanel.getHeight() / 35);
         addList(selectedCharacters, (int) (castlePanel.getWidth() / 1.4), castlePanel.getHeight() / 10, castlePanel.getWidth() / 4, (int) (castlePanel.getHeight() / 1.5));
+        Style.styleListView(selectedCharacters,this.getHeight() / 42);
         addLabel(selectedHeroes, (int) (castlePanel.getWidth() / 1.4), castlePanel.getHeight() / 50, castlePanel.getWidth() / 4, castlePanel.getHeight() / 20);
         Style.styleTitle(selectedHeroes, castlePanel.getHeight() / 35);
         addLabel(heroMessage, castlePanel.getWidth() / 20, (int) (castlePanel.getHeight() / 1.1), (int) (castlePanel.getWidth() / 1.5), castlePanel.getHeight() / 18);

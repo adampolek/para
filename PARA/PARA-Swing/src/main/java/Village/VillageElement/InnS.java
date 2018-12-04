@@ -62,13 +62,12 @@ public class InnS extends JPanel{
     public void createInn(){
         imageLabel = new JLabel();
         innPanel.add(innHeroesList);
+        Style.styleListView(innHeroesList,innPanel.getHeight() / 30);
         innHeroesList.setBounds(innPanel.getWidth()/10 , innPanel.getHeight()/10 , innPanel.getWidth()/3,(int)(innPanel.getHeight()/1.5));
-        innHeroesList.setForeground(Color.ORANGE);
-        innHeroesList.setBackground(Color.DARK_GRAY);
         innPanel.add(innName);
         innName.setText("Inn");
         Style.styleTitle(innName, innPanel.getHeight() / 18);
-        innName.setBounds(innPanel.getWidth() / 10, innPanel.getHeight() / 40, innPanel.getWidth() / 4, innPanel.getHeight() / 15);
+        innName.setBounds(innPanel.getWidth() / 20, innPanel.getHeight() / 40, innPanel.getWidth() / 4, innPanel.getHeight() / 15);
         System.out.println("You clicked Inn");
         DLM.removeAllElements();
 

@@ -37,6 +37,14 @@ public class Style {
         text.setBackground(Color.BLACK);
         text.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
     }
+    public static void styleListView(JList jlist, int sizeFont) {
+        jlist.setForeground(Color.ORANGE);
+        jlist.setFont(new Font("Snap ITC", Font.PLAIN, sizeFont));
+        jlist.setBackground(Color.BLACK);
+        jlist.setSelectionBackground(Color.GREEN);
+        jlist.setSelectionForeground(Color.BLUE);
+        jlist.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
+    }
 
     public static void styleSilders(JSlider slider) {
         slider.setBackground(Color.BLACK);

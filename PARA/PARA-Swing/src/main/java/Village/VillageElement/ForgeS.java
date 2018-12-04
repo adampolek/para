@@ -67,6 +67,7 @@ public class ForgeS extends JPanel {
         forgeHeroesList.setForeground(Color.ORANGE);
         forgeHeroesList.setBackground(Color.DARK_GRAY);
         forgePanel.add(forgeHeroesList);
+        Style.styleListView(forgeHeroesList,this.getHeight() / 42);
         forgePanel.add(forgeName);
         forgeName.setText("Forge");
         Style.styleTitle(forgeName, forgePanel.getHeight() / 18);

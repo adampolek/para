@@ -14,8 +14,8 @@ public class Renderer extends JLabel implements ListCellRenderer
         setIcon(entry.getImg());
 
         if (isSelected) {
-            setBackground(list.getSelectionBackground());
-            setForeground(list.getSelectionForeground());
+            setBackground(Color.GREEN);
+            setForeground(Color.BLUE);
         }
         else {
             setBackground(list.getBackground());
@@ -23,7 +23,8 @@ public class Renderer extends JLabel implements ListCellRenderer
         }
 
         setEnabled(list.isEnabled());
-        setFont(list.getFont());
+        setFont(new Font("Snap ITC", Font.PLAIN, 16));
+        setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
         setOpaque(true);
 
         return this;

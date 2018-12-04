@@ -55,7 +55,7 @@ public class CharactersList{
         panel.add(list);
         list.setBounds((int)(screenWidth/1.2),0,screenWidth-(int)(screenWidth/1.2),screenHeight);
         list.setForeground(Color.ORANGE);
-        list.setBackground(Color.DARK_GRAY);
+        list.setBackground(Color.BLACK);
         list.setModel(listModel);
         list.setVisible(true);
     }
