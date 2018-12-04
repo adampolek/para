@@ -5,7 +5,6 @@ import CharactersList.CharactersList;
 import Gameplay.Game;
 import Mission.MapS;
 import Style.Style;
-import Village.UsersStatsS;
 import Village.VillageS;
 
 import javax.swing.*;

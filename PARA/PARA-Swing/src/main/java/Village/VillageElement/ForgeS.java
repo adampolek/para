@@ -4,7 +4,6 @@ import Characters.Character;
 import CharactersList.CharactersList;
 import Gameplay.Game;
 import Style.Style;
-import Village.UsersStatsS;
 import Village.VillageS;
 
 import javax.swing.*;
@@ -42,7 +41,7 @@ public class ForgeS extends JPanel {
     private JPanel forgePanel;
     private JLabel forgeName = new JLabel();
 
-    public ForgeS(Game game){
+    public ForgeS(final Game game){
         this.game = game;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
@@ -59,6 +58,26 @@ public class ForgeS extends JPanel {
         addKeyListerner();
         createForge();
         add(new UsersStatsS(game));
+        Timer resetUpdate = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int index;
+                index = forgeHeroesList.getSelectedIndex();
+                if(index < 0)
+                    index =0;
+                Character character = game.getUser().getUsersCharacters().get(index);
+                String nameClass = String.valueOf(character.getClass());
+                characterClass.setText(nameClass.substring(17, nameClass.length()));
+                characterClass.setText(nameClass.substring(17, nameClass.length()));
+                characterAttack.setText("Attack: " + character.getAttack() + "(" + character.getAttack_level() * 10 + " gold)");
+                characterHealth.setText("Health: " + character.getHp() + "(" + character.getHp_level() * 10 + " gold)");
+                characterDefence.setText("Defence: " + character.getDefence() + "(" + character.getDefence_level() * 10 + " gold)");
+                characterSpeed.setText("Speed: " + character.getSpeed() + "(" + character.getSpeed_level() * 10 + " gold)");
+                characterDodge.setText("Dodge: " + character.getDodge() + "(" + character.getDodge_level() * 10 + " gold)");
+                characterCritChance.setText("Crit chance: " + character.getCrit_chance() + "(" + character.getCrit_chance_level() * 10 + " gold)");
+            }
+        });
+        resetUpdate.start();
     }
 
     public void createForge(){

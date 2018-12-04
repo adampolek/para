@@ -1,10 +1,12 @@
-package Village;
+package Village.VillageElement;
 
 import Gameplay.Game;
 import Style.Style;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class UsersStatsS extends JPanel{
     private JLabel name= new JLabel();
@@ -39,5 +41,12 @@ public class UsersStatsS extends JPanel{
         gold.setHorizontalAlignment(SwingConstants.LEFT);
         gold.setText(" Gold: " + game.getUser().getGold());
         gold.setVisible(true);
+        Timer resetGold = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gold.setText(" Gold: " + game.getUser().getGold());
+            }
+        });
+        resetGold.start();
     }
 }

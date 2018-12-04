@@ -4,7 +4,6 @@ import Characters.Character;
 import CharactersList.CharactersList;
 import Gameplay.Game;
 import Style.Style;
-import Village.UsersStatsS;
 import Village.VillageS;
 
 import javax.swing.*;

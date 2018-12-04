@@ -7,6 +7,7 @@ import Style.Style;
 import Village.VillageElement.CastleS;
 import Village.VillageElement.ForgeS;
 import Village.VillageElement.InnS;
+import Village.VillageElement.UsersStatsS;
 
 import javax.swing.*;
 import java.awt.*;
