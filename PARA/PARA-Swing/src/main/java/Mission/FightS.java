@@ -56,7 +56,7 @@ public class FightS extends JPanel {
                             button.setBackground(Color.GRAY);
                             repaint();
                             try {
-                                Thread.sleep(3000);
+                                Thread.sleep(1000);
                             } catch (InterruptedException eI) {
                                 eI.printStackTrace();
                             }
@@ -206,7 +206,7 @@ public class FightS extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
-                    game.attackWizard(game.getEnemies().get(game.getEnemies().size() - 1), 1);
+                    game.attackWizard(game.getQueue().get(selectQueue), 1);
                     int select = 0;
                     for (JLabel hp : hpHeroes) {
                         if (!hp.getText().equals("Dead")) {
@@ -251,7 +251,7 @@ public class FightS extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
-                    game.attackWizard(game.getEnemies().get(game.getEnemies().size() - 1), 2);
+                    game.attackWizard(game.getQueue().get(selectQueue), 2);
                     int select = 0;
                     for (JLabel hp : hpHeroes) {
                         if (!hp.getText().equals("Dead")) {
