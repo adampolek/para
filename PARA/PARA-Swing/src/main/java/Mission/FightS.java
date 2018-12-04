@@ -309,8 +309,10 @@ public class FightS extends JPanel {
             heroes.add(hero);
             hero.setBounds((screenHeight / 7) * 2, y, screenHeight / 7, screenHeight / 7);
             hero.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
-            hero.setBackground(Color.BLACK);
+            hero.setOpaque(true);
             hero.setForeground(Color.WHITE);
+            hero.setHorizontalAlignment(SwingConstants.CENTER);
+            hero.setBackground(Color.BLACK);
             y = y + screenHeight / 7 + 30;
         }
     }
@@ -339,6 +341,7 @@ public class FightS extends JPanel {
                     selectEnemy = enemies.indexOf(enemy);
                 }
             });
+            enemy.setOpaque(true);
             enemy.setBackground(Color.BLACK);
             enemy.setForeground(Color.WHITE);
             y = y + screenHeight / 7 + 30;
