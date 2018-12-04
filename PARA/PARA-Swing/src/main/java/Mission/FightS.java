@@ -3,6 +3,7 @@ package Mission;
 import Characters.Character;
 import Gameplay.Game;
 import Style.Style;
+import Village.VillageS;
 
 import javax.swing.*;
 import java.awt.*;
@@ -69,6 +70,13 @@ public class FightS extends JPanel {
                                     }
                                 }
                             }
+                            if (game.getCharacterInMission().isEmpty()) {
+                                game.backFromMission();
+                                getParent().add(new VillageS(game));
+                                getParent().repaint();
+                                getParent().revalidate();
+                                getParent().remove(FightS.this);
+                            }
                             int select = 0;
                             for (JLabel hp : hpHeroes) {
                                 if (!hp.getText().equals("Dead")) {
@@ -79,8 +87,8 @@ public class FightS extends JPanel {
                             button.setBackground(Color.BLACK);
                             repaint();
                             selectQueue++;
-                            Integer end = game.getQueue().size();
-                            if (end.equals(selectQueue)) {
+                            Integer end = game.getQueue().size() - 1;
+                            if (end < selectQueue) {
                                 selectQueue = 0;
                             }
                             break;
@@ -90,11 +98,11 @@ public class FightS extends JPanel {
                     if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
                         attack1.setText("Attack");
                         attack2.setText("Healing");
-                        attack2.setText("Random Healing");
+                        attack3.setText("Random Healing");
                     } else {
                         attack1.setText("Attack 1");
                         attack2.setText("Area attack");
-                        attack2.setText("Attack 2");
+                        attack3.setText("Attack 2");
                     }
                     stateHero.get(0).setText(game.getQueue().get(selectQueue).getType());
                     stateHero.get(1).setText("Attack: " + game.getQueue().get(selectQueue).getAttack());
@@ -147,8 +155,14 @@ public class FightS extends JPanel {
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
                         game.getEnemies().add(null);
                         enemies.remove(selectEnemy);
-                        if (enemies.size() == 0) {
-                            //TODO - koniec fight
+                        if (game.getEnemies().isEmpty()) {
+                            game.changeCellMap();
+                            game.getEnemies().clear();
+                            game.getQueue().clear();
+                            getParent().add(new MapS(game));
+                            getParent().repaint();
+                            getParent().revalidate();
+                            getParent().remove(FightS.this);
                         }
                     } else {
                         hpEnemis.get(selectEnemy).setText(game.getEnemies().get(selectEnemy).getHp() + " hp");
@@ -157,6 +171,11 @@ public class FightS extends JPanel {
                     stateEnemy.get(0).setText("");
                     stateEnemy.get(1).setText("");
                     stateEnemy.get(2).setText("");
+                    selectQueue++;
+                    Integer end = game.getQueue().size() - 1;
+                    if (end < selectQueue) {
+                        selectQueue = 0;
+                    }
                 }
             }
         });
@@ -170,10 +189,18 @@ public class FightS extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
-                    game.attackWizard(game.getEnemies().get(0), 1);
+                    game.attackWizard(game.getEnemies().get(game.getEnemies().size() - 1), 1);
+                    int i = 0, z = 0;
+                    while (z < hpHeroes.size()) {
+                        if (!hpHeroes.get(z).getText().equals("Dead")) {
+                            z++;
+                        }
+                        hpHeroes.get(i).setText(game.getCharacterInMission().get(i).getHp() + " hp");
+                        i++;
+                    }
                 } else {
                     if (game.getCharacterInMission().contains(game.getQueue().get(selectQueue))) {
-                        game.attackHero(game.getQueue().get(selectQueue), game.getEnemies().get(0), 1);
+                        game.attackHero(game.getQueue().get(selectQueue), game.getEnemies().get(game.getEnemies().size() - 1), 1);
                     }
                 }
                 selectEnemyAttack.setVisible(false);
@@ -185,6 +212,11 @@ public class FightS extends JPanel {
                 stateEnemy.get(0).setText("");
                 stateEnemy.get(1).setText("");
                 stateEnemy.get(2).setText("");
+                selectQueue++;
+                Integer end = game.getQueue().size() - 1;
+                if (end < selectQueue) {
+                    selectQueue = 0;
+                }
             }
         });
     }
@@ -196,15 +228,21 @@ public class FightS extends JPanel {
         attack3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (selectEnemy == null) {
+                if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
+                    game.attackWizard(game.getEnemies().get(game.getEnemies().size() - 1), 2);
+                    int i = 0, z = 0;
+                    while (z < hpHeroes.size()) {
+                        if (!hpHeroes.get(z).getText().equals("Dead")) {
+                            z++;
+                        }
+                        hpHeroes.get(i).setText(game.getCharacterInMission().get(i).getHp() + " hp");
+                        i++;
+                    }
+                } else if (selectEnemy == null) {
                     selectEnemyAttack.setVisible(true);
                 } else {
-                    if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
-                        game.attackWizard(null, 2);
-                    } else {
-                        if (game.getCharacterInMission().contains(game.getQueue().get(selectQueue))) {
-                            game.attackHero(game.getQueue().get(selectQueue), game.getEnemies().get(selectEnemy), 2);
-                        }
+                    if (game.getCharacterInMission().contains(game.getQueue().get(selectQueue))) {
+                        game.attackHero(game.getQueue().get(selectQueue), game.getEnemies().get(selectEnemy), 2);
                     }
                     selectEnemyAttack.setVisible(false);
                     if (game.getEnemies().get(selectEnemy).getHp() < 0) {
@@ -212,8 +250,14 @@ public class FightS extends JPanel {
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
                         game.getEnemies().add(null);
                         enemies.remove(selectEnemy);
-                        if (enemies.size() == 0) {
-                            //TODO - koniec fight
+                        if (game.getEnemies().isEmpty()) {
+                            game.changeCellMap();
+                            game.getEnemies().clear();
+                            game.getQueue().clear();
+                            getParent().add(new MapS(game));
+                            getParent().repaint();
+                            getParent().revalidate();
+                            getParent().remove(FightS.this);
                         }
                     } else {
                         hpEnemis.get(selectEnemy).setText(game.getEnemies().get(selectEnemy).getHp() + " hp");
@@ -222,6 +266,11 @@ public class FightS extends JPanel {
                     stateEnemy.get(0).setText("");
                     stateEnemy.get(1).setText("");
                     stateEnemy.get(2).setText("");
+                    selectQueue++;
+                    Integer end = game.getQueue().size() - 1;
+                    if (end < selectQueue) {
+                        selectQueue = 0;
+                    }
                 }
             }
         });
@@ -304,18 +353,18 @@ public class FightS extends JPanel {
         JLabel typeText = new JLabel();
         attacks.add(typeText);
         stateHero.add(typeText);
-        typeText.setBounds(screenWidth / 7, attacks.getHeight() / 16, screenWidth - (attacks.getWidth() / 2 + screenWidth / 7), attacks.getHeight() / 4);
+        typeText.setBounds(0, attacks.getHeight() / 16, screenWidth - (attacks.getWidth() / 2 + screenWidth / 7), attacks.getHeight() / 4);
         Style.styleTitle(typeText, screenHeight / 18);
         JLabel attackText = new JLabel();
         attacks.add(attackText);
         stateHero.add(attackText);
-        attackText.setBounds(screenWidth / 6, attacks.getHeight() / 8 + (attacks.getHeight() / 4), screenWidth - (attacks.getWidth() / 2 + screenWidth / 6), attacks.getHeight() / 4);
+        attackText.setBounds((screenWidth / 6 - screenWidth / 7) * 2, attacks.getHeight() / 8 + (attacks.getHeight() / 4), screenWidth - (attacks.getWidth() / 2 + screenWidth / 6), attacks.getHeight() / 4);
         Style.styleTitle(attackText, screenHeight / 24);
         attackText.setHorizontalAlignment(SwingConstants.LEFT);
         JLabel defenceText = new JLabel();
         attacks.add(defenceText);
         stateHero.add(defenceText);
-        defenceText.setBounds(screenWidth / 6, attacks.getHeight() / 8 + (attacks.getHeight() / 4) * 2 + attacks.getHeight() / 16, screenWidth - (attacks.getWidth() / 2 + screenWidth / 6), attacks.getHeight() / 4);
+        defenceText.setBounds((screenWidth / 6 - screenWidth / 7) * 2, attacks.getHeight() / 8 + (attacks.getHeight() / 4) * 2 + attacks.getHeight() / 16, screenWidth - (attacks.getWidth() / 2 + screenWidth / 6), attacks.getHeight() / 4);
         Style.styleTitle(defenceText, screenHeight / 24);
         defenceText.setHorizontalAlignment(SwingConstants.LEFT);
     }
