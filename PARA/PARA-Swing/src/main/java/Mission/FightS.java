@@ -43,6 +43,10 @@ public class FightS extends JPanel {
         Timer controlFight = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for (JButton button : enemies) {
+                    button.setForeground(Color.WHITE);
+                    repaint();
+                }
                 stateHero.get(0).setText("");
                 stateHero.get(1).setText("");
                 stateHero.get(2).setText("");
@@ -53,7 +57,7 @@ public class FightS extends JPanel {
                 if (game.getEnemies().contains(game.getQueue().get(selectQueue))){
                     for (JButton button : enemies) {
                         if (button.getText().equals(game.getQueue().get(selectQueue).getName())) {
-                            button.setBackground(Color.GRAY);
+                            button.setForeground(Color.RED);
                             repaint();
                             try {
                                 Thread.sleep(1000);
@@ -92,8 +96,6 @@ public class FightS extends JPanel {
                                     select++;
                                 }
                             }
-                            button.setBackground(Color.BLACK);
-                            repaint();
                             selectQueue++;
                             Integer end = game.getQueue().size() - 1;
                             if (end < selectQueue) {
@@ -112,6 +114,7 @@ public class FightS extends JPanel {
                         attack2.setText("Area attack");
                         attack3.setText("Attack 2");
                     }
+                    heroes.get(game.getCharacterInMission().indexOf(game.getQueue().get(selectQueue))).setForeground(Color.RED);
                     stateHero.get(0).setText(game.getQueue().get(selectQueue).getType());
                     stateHero.get(1).setText("Attack: " + game.getQueue().get(selectQueue).getAttack());
                     stateHero.get(2).setText("Defence: " + game.getQueue().get(selectQueue).getDefence());
@@ -158,8 +161,8 @@ public class FightS extends JPanel {
                 if (selectEnemy == null) {
                     selectEnemyAttack.setVisible(true);
                 } else {
-
                     if (game.getCharacterInMission().contains(game.getQueue().get(selectQueue))) {
+                        heroes.get(game.getCharacterInMission().indexOf(game.getQueue().get(selectQueue))).setForeground(Color.WHITE);
                         game.attackHero(game.getQueue().get(selectQueue), game.getEnemies().get(selectEnemy), 0);
                     }
                     selectEnemyAttack.setVisible(false);
@@ -210,12 +213,14 @@ public class FightS extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
+                    heroes.get(game.getCharacterInMission().indexOf(game.getQueue().get(selectQueue))).setForeground(Color.WHITE);
                     game.attackWizard(game.getQueue().get(selectQueue), 1);
                     for (JLabel hp : hpHeroes) {
                         hp.setText(game.getCharacterInMission().get(hpHeroes.indexOf(hp)).getHp() + " hp");
                     }
                 } else {
                     if (game.getCharacterInMission().contains(game.getQueue().get(selectQueue))) {
+                        heroes.get(game.getCharacterInMission().indexOf(game.getQueue().get(selectQueue))).setForeground(Color.WHITE);
                         game.attackHero(game.getQueue().get(selectQueue), game.getEnemies().get(game.getEnemies().size() - 1), 1);
                     }
                 }
@@ -247,6 +252,7 @@ public class FightS extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
+                    heroes.get(game.getCharacterInMission().indexOf(game.getQueue().get(selectQueue))).setForeground(Color.WHITE);
                     game.attackWizard(game.getQueue().get(selectQueue), 2);
                     for (JLabel hp : hpHeroes) {
                         hp.setText(game.getCharacterInMission().get(hpHeroes.indexOf(hp)).getHp() + " hp");
@@ -255,6 +261,7 @@ public class FightS extends JPanel {
                     selectEnemyAttack.setVisible(true);
                 } else {
                     if (game.getCharacterInMission().contains(game.getQueue().get(selectQueue))) {
+                        heroes.get(game.getCharacterInMission().indexOf(game.getQueue().get(selectQueue))).setForeground(Color.WHITE);
                         game.attackHero(game.getQueue().get(selectQueue), game.getEnemies().get(selectEnemy), 2);
                     }
                     selectEnemyAttack.setVisible(false);
@@ -305,6 +312,7 @@ public class FightS extends JPanel {
             hero.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
             hero.setOpaque(true);
             hero.setForeground(Color.WHITE);
+            hero.setFont(new Font("Snap ITC", Font.BOLD, screenHeight / 70));
             hero.setHorizontalAlignment(SwingConstants.CENTER);
             hero.setBackground(Color.BLACK);
             y = y + screenHeight / 7 + 30;
@@ -338,6 +346,7 @@ public class FightS extends JPanel {
             enemy.setOpaque(true);
             enemy.setBackground(Color.BLACK);
             enemy.setForeground(Color.WHITE);
+            enemy.setFont(new Font("Snap ITC", Font.BOLD, screenHeight / 70));
             y = y + screenHeight / 7 + 30;
         }
     }
