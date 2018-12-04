@@ -163,10 +163,10 @@ public class FightS extends JPanel {
                     selectEnemyAttack.setVisible(false);
                     if (game.getEnemies().get(selectEnemy).getHp() <= 0) {
                         remove(hpEnemis.get(selectEnemy));
-                        hpEnemis.remove(selectEnemy);
+                        hpEnemis.remove(hpHeroes.get(selectEnemy));
                         remove(enemies.get(selectEnemy));
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
-                        enemies.remove(selectEnemy);
+                        enemies.remove(enemies.get(selectEnemy));
                         repaint();
                         if (game.getEnemies().isEmpty()) {
                             game.changeCellMap();
@@ -178,7 +178,9 @@ public class FightS extends JPanel {
                             getParent().remove(FightS.this);
                         }
                     } else {
-                        hpEnemis.get(selectEnemy).setText(game.getEnemies().get(selectEnemy).getHp() + " hp");
+                        for (JLabel hp : hpEnemis) {
+                            hp.setText(game.getEnemies().get(hpEnemis.indexOf(hp)).getHp() + " hp");
+                        }
                     }
                     selectEnemy = null;
                     stateEnemy.get(0).setText("");
@@ -207,12 +209,8 @@ public class FightS extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
                     game.attackWizard(game.getQueue().get(selectQueue), 1);
-                    int select = 0;
                     for (JLabel hp : hpHeroes) {
-                        if (!hp.getText().equals("Dead")) {
-                            hp.setText(game.getCharacterInMission().get(select).getHp() + " hp");
-                            select++;
-                        }
+                        hp.setText(game.getCharacterInMission().get(hpHeroes.indexOf(hp)).getHp() + " hp");
                     }
                 } else {
                     if (game.getCharacterInMission().contains(game.getQueue().get(selectQueue))) {
@@ -220,12 +218,8 @@ public class FightS extends JPanel {
                     }
                 }
                 selectEnemyAttack.setVisible(false);
-                int select = 0;
                 for (JLabel hp : hpEnemis) {
-                    if (!hp.getText().equals("Dead")) {
-                        hp.setText(game.getEnemies().get(select).getHp() + " hp");
-                        select++;
-                    }
+                    hp.setText(game.getEnemies().get(hpEnemis.indexOf(hp)).getHp() + " hp");
                 }
                 selectEnemy = null;
                 stateEnemy.get(0).setText("");
@@ -252,12 +246,8 @@ public class FightS extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
                     game.attackWizard(game.getQueue().get(selectQueue), 2);
-                    int select = 0;
                     for (JLabel hp : hpHeroes) {
-                        if (!hp.getText().equals("Dead")) {
-                            hp.setText(game.getCharacterInMission().get(select).getHp() + " hp");
-                            select++;
-                        }
+                        hp.setText(game.getCharacterInMission().get(hpHeroes.indexOf(hp)).getHp() + " hp");
                     }
                 } else if (selectEnemy == null) {
                     selectEnemyAttack.setVisible(true);
@@ -268,14 +258,16 @@ public class FightS extends JPanel {
                     selectEnemyAttack.setVisible(false);
                     if (game.getEnemies().get(selectEnemy).getHp() < 0) {
                         remove(hpEnemis.get(selectEnemy));
-                        hpEnemis.remove(selectEnemy);
+                        hpEnemis.remove(hpHeroes.get(selectEnemy));
                         remove(enemies.get(selectEnemy));
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
-                        enemies.remove(selectEnemy);
+                        enemies.remove(enemies.get(selectEnemy));
                         repaint();
 
                     } else {
-                        hpEnemis.get(selectEnemy).setText(game.getEnemies().get(selectEnemy).getHp() + " hp");
+                        for (JLabel hp : hpEnemis) {
+                            hp.setText(game.getEnemies().get(hpEnemis.indexOf(hp)).getHp() + " hp");
+                        }
                     }
                     selectEnemy = null;
                     stateEnemy.get(0).setText("");
