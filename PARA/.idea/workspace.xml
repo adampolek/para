@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8bd1eabf-88f3-4b7e-bc4f-340b51899339" name="Default" comment="GameMenu zrobione juz">
+    <list default="true" id="8bd1eabf-88f3-4b7e-bc4f-340b51899339" name="Default" comment="Mazak cos pewnie zepsul">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/src/main/java/Mission/FightS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/src/main/java/Mission/FightS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Mission/FightS$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Mission/FightS$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Mission/FightS$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Mission/FightS$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Mission/FightS$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Mission/FightS$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PARA-Swing/target/classes/Mission/FightS.class" beforeDir="false" afterPath="$PROJECT_DIR$/PARA-Swing/target/classes/Mission/FightS.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/PARA-GUI/target/" />
@@ -47,27 +53,30 @@
     <session id="-1591160599">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="1" />
+          <entry key="java" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="1" />
+          <entry key="JAVA" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="316" />
+          <entry key="txt" value="24" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="316" />
+          <entry key="PLAIN_TEXT" value="24" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Menu/Menu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Menu/GameMenu.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -129,26 +138,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Mission/FightS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="191" column="37" selection-start-line="191" selection-start-column="25" selection-end-line="191" selection-end-column="37" />
+            <state relative-caret-position="191">
+              <caret line="355" selection-start-line="355" selection-end-line="355" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java">
+        <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Style/Style.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3855">
-              <caret line="275" column="32" selection-start-line="275" selection-start-column="32" selection-end-line="275" selection-end-column="32" />
+            <state relative-caret-position="75">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="99" column="29" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PARA-core/src/main/java/Gameplay/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="213" column="42" lean-forward="true" selection-start-line="213" selection-start-column="42" selection-end-line="213" selection-end-column="42" />
+            <state relative-caret-position="647">
+              <caret line="216" column="64" selection-start-line="216" selection-start-column="64" selection-end-line="216" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -213,15 +231,16 @@
         <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Menu/ElementsMenu/Load.java" />
         <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Menu/GameMenu.java" />
         <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/CharactersList/CharactersList.java" />
-        <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Style/Style.java" />
         <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/PARA-core/src/main/java/Gameplay/Game.java" />
         <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/CastleS.java" />
         <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageS.java" />
         <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/UsersStatsS.java" />
-        <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java" />
         <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/ForgeS.java" />
         <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/InnS.java" />
+        <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Style/Style.java" />
+        <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Mission/FightS.java" />
+        <option value="$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java" />
       </list>
     </option>
   </component>
@@ -289,6 +308,34 @@
             </path>
             <path>
               <item name="PARA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PARA" type="462c0819:PsiDirectoryNode" />
+              <item name="PARA-Swing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Style" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PARA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PARA" type="462c0819:PsiDirectoryNode" />
+              <item name="PARA-Swing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Village" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PARA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PARA" type="462c0819:PsiDirectoryNode" />
+              <item name="PARA-Swing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Village" type="462c0819:PsiDirectoryNode" />
+              <item name="VillageElement" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PARA" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -300,7 +347,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543873032306" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543921169667" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -606,11 +653,19 @@
       <option name="project" value="LOCAL" />
       <updated>1543713529173</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Mazak cos pewnie zepsul">
+      <created>1543915756208</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1543915756208</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18783352" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -621,7 +676,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3296355" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49707174" visible="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49707174" visible="true" weight="0.3265086" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4956076" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -629,7 +684,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5043924" side_tool="true" weight="0.39936608" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3280507" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3275862" />
       <window_info anchor="bottom" id="SonarLint" order="11" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -681,7 +736,8 @@
     <MESSAGE value="tak" />
     <MESSAGE value="opcje i load skonczone tylko adas zmien mapisy w opcjach xd" />
     <MESSAGE value="GameMenu zrobione juz" />
-    <option name="LAST_COMMIT_MESSAGE" value="GameMenu zrobione juz" />
+    <MESSAGE value="Mazak cos pewnie zepsul" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mazak cos pewnie zepsul" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/PARA-GUI/src/main/java/Main.java" />
@@ -817,13 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Style/Style.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="58" column="73" selection-start-line="58" selection-start-column="73" selection-end-line="58" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PARA-core/src/main/java/Buildings/Inn.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -922,13 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3855">
-          <caret line="275" column="32" selection-start-line="275" selection-start-column="32" selection-end-line="275" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/ForgeS.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -946,17 +988,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Mission/FightS.java">
+    <entry file="file://$PROJECT_DIR$/PARA-core/src/main/java/Gameplay/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="191" column="37" selection-start-line="191" selection-start-column="25" selection-end-line="191" selection-end-column="37" />
+        <state relative-caret-position="647">
+          <caret line="216" column="64" selection-start-line="216" selection-start-column="64" selection-end-line="216" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PARA-core/src/main/java/Gameplay/Game.java">
+    <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Style/Style.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="213" column="42" lean-forward="true" selection-start-line="213" selection-start-column="42" selection-end-line="213" selection-end-column="42" />
+        <state relative-caret-position="75">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Mission/FightS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="355" selection-start-line="355" selection-end-line="355" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PARA-Swing/src/main/java/Village/VillageElement/CastleS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="99" column="29" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
         </state>
       </provider>
     </entry>

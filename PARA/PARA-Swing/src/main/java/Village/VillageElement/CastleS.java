@@ -82,7 +82,7 @@ public class CastleS extends JPanel implements  ActionListener{
         smallMap.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                selectedMap=0;
+                selectedMap=2;
                 mapLabel.setText("Map selected: Small map");
             }
         });
@@ -97,7 +97,7 @@ public class CastleS extends JPanel implements  ActionListener{
         bigMap.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                selectedMap=2;
+                selectedMap=1;
                 mapLabel.setText("Map selected: Big map");
             }
         });

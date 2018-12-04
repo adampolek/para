@@ -46,7 +46,11 @@ public class FightS extends JPanel {
                 stateHero.get(0).setText("");
                 stateHero.get(1).setText("");
                 stateHero.get(2).setText("");
-                if (game.getEnemies().contains(game.getQueue().get(selectQueue))) {
+                int lastIndex = game.getQueue().size() - 1;
+                if(lastIndex < selectQueue){
+                    selectQueue = 0;
+                }
+                if (game.getEnemies().contains(game.getQueue().get(selectQueue))){
                     for (JButton button : enemies) {
                         if (button.getText().equals(game.getQueue().get(selectQueue).getName())) {
                             button.setBackground(Color.GRAY);
@@ -58,8 +62,10 @@ public class FightS extends JPanel {
                             }
                             Character character = game.enemyRandomAttack(game.getQueue().get(selectQueue));
                             if (character.getHp() < 0) {
+                                remove(hpHeroes.get(game.getCharacterInMission().indexOf(character)));
                                 game.deletehp(game.getCastle().getCharacters().indexOf(character));
                                 game.deadHero(character);
+                                repaint();
                                 for (JLabel heroButton : heroes) {
                                     if (heroButton.getText().equals(character.getName())) {
                                         hpHeroes.get(heroes.lastIndexOf(heroButton)).setText("Dead");
@@ -143,18 +149,25 @@ public class FightS extends JPanel {
         attack1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int lastIndex = game.getQueue().size() - 1;
+                if(lastIndex < selectQueue){
+                    selectQueue = 0;
+                }
                 if (selectEnemy == null) {
                     selectEnemyAttack.setVisible(true);
                 } else {
+
                     if (game.getCharacterInMission().contains(game.getQueue().get(selectQueue))) {
                         game.attackHero(game.getQueue().get(selectQueue), game.getEnemies().get(selectEnemy), 0);
                     }
                     selectEnemyAttack.setVisible(false);
-                    if (game.getEnemies().get(selectEnemy).getHp() < 0) {
-                        hpEnemis.get(selectEnemy).setText("Dead");
+                    if (game.getEnemies().get(selectEnemy).getHp() <= 0) {
+                        remove(hpEnemis.get(selectEnemy));
+                        hpEnemis.remove(selectEnemy);
+                        remove(enemies.get(selectEnemy));
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
                         enemies.remove(selectEnemy);
-                        changeIndex();
+                        repaint();
                         if (game.getEnemies().isEmpty()) {
                             game.changeCellMap();
                             game.getEnemies().clear();
@@ -177,6 +190,10 @@ public class FightS extends JPanel {
                         selectQueue = 0;
                     }
                 }
+                stateHero.get(0).setText("");
+                stateHero.get(1).setText("");
+                stateHero.get(2).setText("");
+                changeIndex();
             }
         });
     }
@@ -219,6 +236,9 @@ public class FightS extends JPanel {
                 if (end < selectQueue) {
                     selectQueue = 0;
                 }
+                stateHero.get(0).setText("");
+                stateHero.get(1).setText("");
+                stateHero.get(2).setText("");
             }
         });
     }
@@ -247,10 +267,12 @@ public class FightS extends JPanel {
                     }
                     selectEnemyAttack.setVisible(false);
                     if (game.getEnemies().get(selectEnemy).getHp() < 0) {
-                        hpEnemis.get(selectEnemy).setText("Dead");
+                        remove(hpEnemis.get(selectEnemy));
+                        hpEnemis.remove(selectEnemy);
+                        remove(enemies.get(selectEnemy));
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
                         enemies.remove(selectEnemy);
-                        changeIndex();
+                        repaint();
 
                     } else {
                         hpEnemis.get(selectEnemy).setText(game.getEnemies().get(selectEnemy).getHp() + " hp");
@@ -265,6 +287,10 @@ public class FightS extends JPanel {
                         selectQueue = 0;
                     }
                 }
+                stateHero.get(0).setText("");
+                stateHero.get(1).setText("");
+                stateHero.get(2).setText("");
+                changeIndex();
             }
         });
     }
@@ -291,9 +317,8 @@ public class FightS extends JPanel {
 
     public void addEnemies() {
         int y = (30 + (screenHeight / 3) * 2 - (screenHeight / 7 + 30) * game.getEnemies().size()) / 2;
-        int select = 0;
         for (final Character character : game.getEnemies()) {
-            JButton enemy = new JButton(character.getName());
+            final JButton enemy = new JButton(character.getName());
             JLabel hpText = new JLabel(character.getHp() + " hp");
             hpText.setBounds(screenWidth - (screenHeight / 8) * 2, y, (screenHeight / 8) * 2, screenHeight / 7);
             Style.styleTitle(hpText, screenHeight / 24);
@@ -304,7 +329,6 @@ public class FightS extends JPanel {
             enemies.add(enemy);
             enemy.setBounds(screenWidth - (screenHeight / 7) * 3, y, screenHeight / 7, screenHeight / 7);
             enemy.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.DARK_GRAY));
-            final int finalSelect = select;
             enemy.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -312,10 +336,9 @@ public class FightS extends JPanel {
                     stateEnemy.get(1).setText("Attack: " + character.getAttack());
                     stateEnemy.get(2).setText("Defence: " + character.getDefence());
                     selectEnemyAttack.setVisible(false);
-                    selectEnemy = finalSelect;
+                    selectEnemy = enemies.indexOf(enemy);
                 }
             });
-            select++;
             enemy.setBackground(Color.BLACK);
             enemy.setForeground(Color.WHITE);
             y = y + screenHeight / 7 + 30;
@@ -323,26 +346,20 @@ public class FightS extends JPanel {
     }
 
     public void changeIndex() {
-        int choise = 0, select = 0;
-        for (JButton button : enemies) {
-            if (hpEnemis.get(choise).getText().equals("Dead")) {
-                final int finalSelect = select;
-                for (ActionListener al : button.getActionListeners()) {
-                    button.removeActionListener(al);
-                }
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        stateEnemy.get(0).setText(game.getEnemies().get(finalSelect).getType());
-                        stateEnemy.get(1).setText("Attack: " + game.getEnemies().get(finalSelect).getAttack());
-                        stateEnemy.get(2).setText("Defence: " + game.getEnemies().get(finalSelect).getDefence());
-                        selectEnemyAttack.setVisible(false);
-                        selectEnemy = finalSelect;
-                    }
-                });
-                select++;
+        for (final JButton button : enemies) {
+            for (ActionListener al : button.getActionListeners()) {
+                button.removeActionListener(al);
             }
-            choise++;
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    stateEnemy.get(0).setText(game.getEnemies().get(enemies.indexOf(button)).getType());
+                    stateEnemy.get(1).setText("Attack: " + game.getEnemies().get(enemies.indexOf(button)).getAttack());
+                    stateEnemy.get(2).setText("Defence: " + game.getEnemies().get(enemies.indexOf(button)).getDefence());
+                    selectEnemyAttack.setVisible(false);
+                    selectEnemy = enemies.indexOf(button);
+                }
+            });
         }
     }
 
