@@ -68,8 +68,10 @@ public class FightS extends JPanel {
                                 repaint();
                                 for (JLabel heroButton : heroes) {
                                     if (heroButton.getText().equals(character.getName())) {
-                                        hpHeroes.get(heroes.lastIndexOf(heroButton)).setText("Dead");
                                         game.deadHero(character);
+                                        remove(hpHeroes.get(heroes.lastIndexOf(heroButton)));
+                                        hpHeroes.remove(heroes.lastIndexOf(heroButton));
+                                        remove(heroButton);
                                         heroes.remove(heroButton);
                                         repaint();
                                         break;
@@ -163,7 +165,7 @@ public class FightS extends JPanel {
                     selectEnemyAttack.setVisible(false);
                     if (game.getEnemies().get(selectEnemy).getHp() <= 0) {
                         remove(hpEnemis.get(selectEnemy));
-                        hpEnemis.remove(hpHeroes.get(selectEnemy));
+                        hpEnemis.remove(hpEnemis.get(selectEnemy));
                         remove(enemies.get(selectEnemy));
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
                         enemies.remove(enemies.get(selectEnemy));
@@ -258,7 +260,7 @@ public class FightS extends JPanel {
                     selectEnemyAttack.setVisible(false);
                     if (game.getEnemies().get(selectEnemy).getHp() < 0) {
                         remove(hpEnemis.get(selectEnemy));
-                        hpEnemis.remove(hpHeroes.get(selectEnemy));
+                        hpEnemis.remove(hpEnemis.get(selectEnemy));
                         remove(enemies.get(selectEnemy));
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
                         enemies.remove(enemies.get(selectEnemy));
