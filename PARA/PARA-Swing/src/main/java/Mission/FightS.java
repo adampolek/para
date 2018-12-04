@@ -254,6 +254,11 @@ public class FightS extends JPanel {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
                     heroes.get(game.getCharacterInMission().indexOf(game.getQueue().get(selectQueue))).setForeground(Color.WHITE);
                     game.attackWizard(game.getQueue().get(selectQueue), 2);
+                    selectQueue++;
+                    Integer end = game.getQueue().size() - 1;
+                    if (end < selectQueue) {
+                        selectQueue = 0;
+                    }
                     for (JLabel hp : hpHeroes) {
                         hp.setText(game.getCharacterInMission().get(hpHeroes.indexOf(hp)).getHp() + " hp");
                     }
@@ -272,7 +277,15 @@ public class FightS extends JPanel {
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
                         enemies.remove(enemies.get(selectEnemy));
                         repaint();
-
+                        if (game.getEnemies().isEmpty()) {
+                            game.changeCellMap();
+                            game.getEnemies().clear();
+                            game.getQueue().clear();
+                            getParent().add(new MapS(game));
+                            getParent().repaint();
+                            getParent().revalidate();
+                            getParent().remove(FightS.this);
+                        }
                     } else {
                         for (JLabel hp : hpEnemis) {
                             hp.setText(game.getEnemies().get(hpEnemis.indexOf(hp)).getHp() + " hp");
