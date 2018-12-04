@@ -129,7 +129,7 @@ public class FightS extends JPanel {
 
     public void addAtacks() {
         add(attacks);
-        attacks.setBounds(10, (int) (screenHeight / 3) * 2, screenWidth - 20, screenHeight / 3 - 10);
+        attacks.setBounds(10, (screenHeight / 3) * 2, screenWidth - 20, screenHeight / 3 - 10);
         attacks.setLayout(null);
         attacks.setBackground(Color.BLACK);
         attacks.setBorder(BorderFactory.createMatteBorder(10, 5, 5, 5, Color.DARK_GRAY));
@@ -153,8 +153,8 @@ public class FightS extends JPanel {
                     if (game.getEnemies().get(selectEnemy).getHp() < 0) {
                         hpEnemis.get(selectEnemy).setText("Dead");
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
-                        game.getEnemies().add(null);
                         enemies.remove(selectEnemy);
+                        changeIndex();
                         if (game.getEnemies().isEmpty()) {
                             game.changeCellMap();
                             game.getEnemies().clear();
@@ -190,13 +190,12 @@ public class FightS extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
                     game.attackWizard(game.getEnemies().get(game.getEnemies().size() - 1), 1);
-                    int i = 0, z = 0;
-                    while (z < hpHeroes.size()) {
-                        if (!hpHeroes.get(z).getText().equals("Dead")) {
-                            z++;
+                    int select = 0;
+                    for (JLabel hp : hpHeroes) {
+                        if (!hp.getText().equals("Dead")) {
+                            hp.setText(game.getCharacterInMission().get(select).getHp() + " hp");
+                            select++;
                         }
-                        hpHeroes.get(i).setText(game.getCharacterInMission().get(i).getHp() + " hp");
-                        i++;
                     }
                 } else {
                     if (game.getCharacterInMission().contains(game.getQueue().get(selectQueue))) {
@@ -204,9 +203,12 @@ public class FightS extends JPanel {
                     }
                 }
                 selectEnemyAttack.setVisible(false);
-                for (int i = 0; i < enemies.size(); i++) {
-                    if (!hpEnemis.get(i).getText().equals("Dead"))
-                        hpEnemis.get(i).setText(game.getEnemies().get(i).getHp() + " hp");
+                int select = 0;
+                for (JLabel hp : hpEnemis) {
+                    if (!hp.getText().equals("Dead")) {
+                        hp.setText(game.getEnemies().get(select).getHp() + " hp");
+                        select++;
+                    }
                 }
                 selectEnemy = null;
                 stateEnemy.get(0).setText("");
@@ -230,13 +232,12 @@ public class FightS extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (game.getQueue().get(selectQueue).getType().equals("Wizard")) {
                     game.attackWizard(game.getEnemies().get(game.getEnemies().size() - 1), 2);
-                    int i = 0, z = 0;
-                    while (z < hpHeroes.size()) {
-                        if (!hpHeroes.get(z).getText().equals("Dead")) {
-                            z++;
+                    int select = 0;
+                    for (JLabel hp : hpHeroes) {
+                        if (!hp.getText().equals("Dead")) {
+                            hp.setText(game.getCharacterInMission().get(select).getHp() + " hp");
+                            select++;
                         }
-                        hpHeroes.get(i).setText(game.getCharacterInMission().get(i).getHp() + " hp");
-                        i++;
                     }
                 } else if (selectEnemy == null) {
                     selectEnemyAttack.setVisible(true);
@@ -248,17 +249,9 @@ public class FightS extends JPanel {
                     if (game.getEnemies().get(selectEnemy).getHp() < 0) {
                         hpEnemis.get(selectEnemy).setText("Dead");
                         game.deadEnemy(game.getEnemies().get(selectEnemy));
-                        game.getEnemies().add(null);
                         enemies.remove(selectEnemy);
-                        if (game.getEnemies().isEmpty()) {
-                            game.changeCellMap();
-                            game.getEnemies().clear();
-                            game.getQueue().clear();
-                            getParent().add(new MapS(game));
-                            getParent().repaint();
-                            getParent().revalidate();
-                            getParent().remove(FightS.this);
-                        }
+                        changeIndex();
+
                     } else {
                         hpEnemis.get(selectEnemy).setText(game.getEnemies().get(selectEnemy).getHp() + " hp");
                     }
@@ -326,6 +319,30 @@ public class FightS extends JPanel {
             enemy.setBackground(Color.BLACK);
             enemy.setForeground(Color.WHITE);
             y = y + screenHeight / 7 + 30;
+        }
+    }
+
+    public void changeIndex() {
+        int choise = 0, select = 0;
+        for (JButton button : enemies) {
+            if (hpEnemis.get(choise).getText().equals("Dead")) {
+                final int finalSelect = select;
+                for (ActionListener al : button.getActionListeners()) {
+                    button.removeActionListener(al);
+                }
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        stateEnemy.get(0).setText(game.getEnemies().get(finalSelect).getType());
+                        stateEnemy.get(1).setText("Attack: " + game.getEnemies().get(finalSelect).getAttack());
+                        stateEnemy.get(2).setText("Defence: " + game.getEnemies().get(finalSelect).getDefence());
+                        selectEnemyAttack.setVisible(false);
+                        selectEnemy = finalSelect;
+                    }
+                });
+                select++;
+            }
+            choise++;
         }
     }
 
