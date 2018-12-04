@@ -97,7 +97,7 @@ public class CastleS extends JPanel implements  ActionListener{
         bigMap.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                selectedMap=1;
+                selectedMap=0;
                 mapLabel.setText("Map selected: Big map");
             }
         });
